@@ -76,8 +76,9 @@
       >
         <image
           src="logo_small.png"
-          class="text-xl sm:text-2xl font-serif tracking-widest text-jmc-gold font-bold w-18 h-14 tint-white"
-        />
+          class="text-xl sm:text-2xl font-serif tracking-widest text-jmc-gold font-bold w-18 h-14 bg-jmc-gold rounded-sm"
+          />
+          <!-- style="filter: brightness(0) invert(1);" -->
           <!-- JMC
         </div> -->
         <div
@@ -249,6 +250,31 @@
           menu.classList.toggle("active");
           body.classList.toggle("menu-open");
         }
+
+        // Carousel functionality
+        document.addEventListener('DOMContentLoaded', function() {
+          const prevBtn = document.getElementById('carousel-prev');
+          const nextBtn = document.getElementById('carousel-next');
+          const container = document.getElementById('carousel-container');
+
+          if (prevBtn && nextBtn && container) {
+            const scrollAmount = 300; // Adjust based on card width
+
+            prevBtn.addEventListener('click', function() {
+              container.scrollBy({
+                left: -scrollAmount,
+                behavior: 'smooth'
+              });
+            });
+
+            nextBtn.addEventListener('click', function() {
+              container.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+              });
+            });
+          }
+        });
       </script>
 
       <div
@@ -428,6 +454,7 @@
           <div class="relative px-8 sm:px-12 lg:px-16 mt-8 lg:mt-0">
             <!-- Left Navigation Arrow - Fixed Position -->
             <button
+              id="carousel-prev"
               class="absolute -left-2 sm:left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-jmc-gold hover:text-white transition group"
             >
               <svg
@@ -447,6 +474,7 @@
 
             <!-- Right Navigation Arrow - Fixed Position -->
             <button
+              id="carousel-next"
               class="absolute -right-2 sm:right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-jmc-gold hover:text-white transition group"
             >
               <svg
@@ -466,6 +494,7 @@
 
             <!-- Product Cards Container -->
             <div
+              id="carousel-container"
               class="flex gap-4 sm:gap-6 overflow-x-auto sm:overflow-hidden snap-x snap-mandatory pb-4 sm:pb-0 scrollbar-hide"
             >
               <!-- Product Card 1 -->
