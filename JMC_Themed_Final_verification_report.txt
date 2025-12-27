@@ -1,0 +1,38 @@
+JMC THEME VERIFICATION REPORT
+================================================================================
+
+JMC BRAND COLORS:
+--------------------------------------------------------------------------------
+JMC Green            (#05231c):   50 occurrences
+JMC Cream            (#f9f5f0):   52 occurrences
+JMC Gold             (#d4af37):    3 occurrences
+JMC Gold Light       (#e5c567):    1 occurrences
+
+================================================================================
+OTHER COLORS FOUND:
+--------------------------------------------------------------------------------
+#ffffff         -   21 times
+#d4cdc6         -    9 times
+#fff            -    7 times
+#4a4a4a         -    4 times
+#007bff         -    2 times
+#ababab         -    2 times
+#333333         -    1 times
+#007aff         -    1 times
+#e8e8e8         -    1 times
+#47494e         -    1 times
+#e6e6e6         -    1 times
+#eceef1         -    1 times
+#3d352e         -    1 times
+#d2d2d2         -    1 times
+#b7b7b7         -    1 times
+#d9d5ca         -    1 times
+#d2cec4         -    1 times
+#9ca3af         -    1 times
+#5433eb         -    1 times
+
+================================================================================
+FONTS:
+--------------------------------------------------------------------------------
+Playfair Display: 1 references
+Lato: 3 references

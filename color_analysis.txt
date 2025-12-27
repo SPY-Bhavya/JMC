@@ -1,0 +1,56 @@
+Color Analysis Report
+================================================================================
+
+HEX COLORS (Top 30)
+--------------------------------------------------------------------------------
+#f6f3f0              - Used   51 times
+#000000              - Used   31 times
+#ffffff              - Used   21 times
+#cec7c0              - Used    9 times
+#090a0b              - Used    8 times
+#fff                 - Used    7 times
+#000                 - Used    5 times
+#6b6b6b              - Used    4 times
+#007bff              - Used    2 times
+#ababab              - Used    2 times
+#020202              - Used    2 times
+#202020              - Used    2 times
+#928f85              - Used    2 times
+#555                 - Used    1 times
+#007aff              - Used    1 times
+#222                 - Used    1 times
+#e8e8e8              - Used    1 times
+#47494e              - Used    1 times
+#e6e6e6              - Used    1 times
+#eceef1              - Used    1 times
+#3d352e              - Used    1 times
+#d2d2d2              - Used    1 times
+#b7b7b7              - Used    1 times
+#d9d5ca              - Used    1 times
+#d2cec4              - Used    1 times
+#9ca3af              - Used    1 times
+#5433eb              - Used    1 times
+
+================================================================================
+RGB COLORS
+--------------------------------------------------------------------------------
+
+================================================================================
+RGBA COLORS
+--------------------------------------------------------------------------------
+rgba(255,255,255,1)                                - Used    4 times
+rgba(0,0,0,0)                                      - Used    2 times
+rgba(0,0,0,1)                                      - Used    2 times
+rgba(0,0,0,0.9)                                    - Used    2 times
+rgba(0,0,0,0.25)                                   - Used    2 times
+rgba(14,18,19,1)                                   - Used    2 times
+rgba(30,30,30,1)                                   - Used    2 times
+rgba(0,0,0,.15)                                    - Used    1 times
+rgba(233,210,159,1)                                - Used    1 times
+rgba(255,228,167,1)                                - Used    1 times
+rgba(240,207,127,1)                                - Used    1 times
+rgba(213,180,125,1)                                - Used    1 times
+rgba(220,182,78,1)                                 - Used    1 times
+rgba(0,0,0,0.5)                                    - Used    1 times
+rgba(33,34,36,1)                                   - Used    1 times
+rgba(25,29,30,1)                                   - Used    1 times

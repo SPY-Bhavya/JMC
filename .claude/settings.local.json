@@ -1,7 +1,18 @@
 {
   "permissions": {
     "allow": [
-      "Bash(timeout:*)"
+      "Bash(timeout:*)",
+      "Bash(ls:*)",
+      "Bash(python format_html.py:*)",
+      "Bash(python analyze_colors.py:*)",
+      "Bash(python apply_jmc_colors.py:*)",
+      "Bash(python update_fonts.py:*)",
+      "Bash(python verify_theme.py:*)",
+      "Bash(python convert_to_jmc.py:*)",
+      "Bash(python update_logo.py:*)",
+      "Bash(python verify_jmc_conversion.py:*)",
+      "Bash(python:*)",
+      "Bash(test:*)"
     ]
   }
 }

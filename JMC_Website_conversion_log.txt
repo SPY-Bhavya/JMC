@@ -1,0 +1,33 @@
+JMC CONVERSION LOG
+================================================================================
+
+Total Replacements: 144
+
+DETAILED REPLACEMENTS:
+--------------------------------------------------------------------------------
+Manish Malhotra                          -> JMC - Jewellers Madanlal Chaganlal       (10 times)
+Manish\s*Malhotra                        -> JMC                                      (78 times)
+High Jewellery                           -> Bridal Collection                        (2 times)
+Fine Jewellery                           -> Fine Jewellery                           (3 times)
+Lehengas                                 -> Diamond Necklaces                        (4 times)
+Kurta Sets                               -> Gold Rings                               (4 times)
+Sarees                                   -> Bridal Sets                              (4 times)
+Fusion Wear                              -> Polki Collection                         (2 times)
+Sherwani Sets                            -> Heritage Jewellery                       (2 times)
+Men's Jacket Sets                        -> Silver Collection                        (2 times)
+Menswear Jewellery                       -> Mens Jewellery                           (2 times)
+Couture                                  -> Collections                              (3 times)
+In the Spotlight                         -> Featured Collections                     (2 times)
+Necklaces                                -> Necklaces & Sets                         (6 times)
+View All                                 -> View All Jewellery                       (2 times)
+Popular search:                          -> Popular Searches:                        (2 times)
+Popular-ssearch-text                     -> Popular-search-text                      (6 times)
+COCO JONES, MET GALA 2025                -> EXQUISITE CRAFTSMANSHIP                  (1 times)
+MET GALA                                 -> HERITAGE COLLECTION                      (1 times)
+HIGH JEWELLERY                           -> FINE JEWELLERY                           (1 times)
+STATEMENT NECKLACES                      -> SIGNATURE NECKLACES                      (1 times)
+Featuring over 30 carats of tanzanites   -> Featuring exquisite diamonds and precious gems (1 times)
+alongside diamonds and a graceful        -> crafted with timeless elegance and a graceful (1 times)
+cascade of pearl                         -> touch of heritage                        (1 times)
+Main cart                                -> Shopping Cart                            (2 times)
+Continue shopping                        -> Continue Shopping                        (1 times)

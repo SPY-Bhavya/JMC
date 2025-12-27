@@ -1,0 +1,34 @@
+JMC CONVERSION VERIFICATION REPORT
+================================================================================
+
+Status: COMPLETE
+File: JMC_Website.html
+Size: 4.17 MB
+
+Successes: 20
+Warnings: 0
+Issues: 0
+
+SUCCESSES:
+--------------------------------------------------------------------------------
+  - No Manish Malhotra references found
+  - JMC brand name present
+  - Full business name present
+  - JMC logo present
+  - Nav item 'Bridal Collection' present
+  - Nav item 'Fine Jewellery' present
+  - Nav item 'Diamond Necklaces' present
+  - Nav item 'Gold Rings' present
+  - Nav item 'Bridal Sets' present
+  - Fashion item 'Lehengas' removed
+  - Fashion item 'Kurta Sets' removed
+  - Fashion item 'Sarees' removed
+  - Fashion item 'Sherwani Sets' removed
+  - JMC Green color present
+  - JMC Cream color present
+  - JMC Gold color present
+  - Title tag contains JMC
+  - Meta description contains JMC
+  - JMC logo referenced 28 times
+  - No base64 encoded logos
+

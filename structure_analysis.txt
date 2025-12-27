@@ -1,0 +1,207 @@
+HTML Structure Analysis
+================================================================================
+
+Title: 
+  Manish Malhotra
+ 
+
+Total Images: 27
+Total Links: 97
+
+Main Sections:
+--------------------------------------------------------------------------------
+
+1. <div>
+   Classes: preloader hidden sf-hidden
+
+2. <div>
+   ID: web-pixels-manager-sandbox-container
+   Classes: sf-hidden
+
+3. <div>
+   ID: CartDrawer
+   Classes: cart-drawer
+   Content: Main cartYour cart is emptyContinue shoppingHave an account?Log into check out faster....
+
+4. <div>
+   ID: CartDrawer-Overlay
+   Classes: cart-drawer__overlay
+
+5. <div>
+   Classes: drawer__inner
+   Content: Main cartYour cart is emptyContinue shoppingHave an account?Log into check out faster....
+
+6. <div>
+   Classes: drawer__header
+   Content: Main cart...
+
+7. <div>
+   Classes: drawer__inner-empty
+   Content: Your cart is emptyContinue shoppingHave an account?Log into check out faster....
+
+8. <div>
+   Classes: cart-drawer__warnings center
+   Content: Your cart is emptyContinue shoppingHave an account?Log into check out faster....
+
+9. <div>
+   Classes: cart-drawer__empty-content
+   Content: Your cart is emptyContinue shoppingHave an account?Log into check out faster....
+
+10. <div>
+   Classes: drawer__footer sf-hidden
+
+11. <div>
+   Classes: cart__ctas sf-hidden
+
+12. <div>
+   ID: shopify-section-sections--19496850161764__header
+   Classes: shopify-section shopify-section-group-header-group section-header scrolled-past-header shopify-section-header-sticky animate shopify-section-header-hidden
+   Content: High JewelleryFine JewelleryFine JewelleryEarringsRingsBangles & BraceletsNecklacesView AllMenswear JewelleryIn the SpotlightAbout UsWishlistLog inIns...
+
+13. <header>
+   Classes: header page-width header--mobile-center header--has-menu header--has-social header--has-account
+   Content: High JewelleryFine JewelleryFine JewelleryEarringsRingsBangles & BraceletsNecklacesView AllMenswear JewelleryIn the SpotlightAbout UsWishlistLog inIns...
+
+14. <div>
+   ID: menu-drawer
+   Classes: gradient menu-drawer motion-reduce color-
+   Content: High JewelleryFine JewelleryFine JewelleryEarringsRingsBangles & BraceletsNecklacesView AllMenswear JewelleryIn the SpotlightAbout UsWishlistLog inIns...
+
+15. <div>
+   Classes: menu-drawer__inner-container
+   Content: High JewelleryFine JewelleryFine JewelleryEarringsRingsBangles & BraceletsNecklacesView AllMenswear JewelleryIn the SpotlightAbout UsWishlistLog inIns...
+
+16. <div>
+   Classes: menu-drawer__navigation-container
+   Content: High JewelleryFine JewelleryFine JewelleryEarringsRingsBangles & BraceletsNecklacesView AllMenswear JewelleryIn the SpotlightAbout UsWishlistLog inIns...
+
+17. <nav>
+   Classes: menu-drawer__navigation
+   Content: High JewelleryFine JewelleryFine JewelleryEarringsRingsBangles & BraceletsNecklacesView AllMenswear JewelleryIn the SpotlightAbout Us...
+
+18. <div>
+   ID: link-fine-jewellery
+   Classes: menu-drawer__submenu has-submenu gradient motion-reduce
+   Content: Fine JewelleryEarringsRingsBangles & BraceletsNecklacesView All...
+
+19. <div>
+   Classes: menu-drawer__inner-submenu
+   Content: Fine JewelleryEarringsRingsBangles & BraceletsNecklacesView All...
+
+20. <div>
+   Classes: menu-drawer__utility-links
+   Content: WishlistLog inInstagramFacebookYouTubePinterest...
+
+21. <div>
+   Classes: search-modal modal__content
+   Content: SearchSearchPopular search:LehengasKurta SetsSareesFusion WearSherwani SetsMen's Kurta SetsMen's Jacket Sets...
+
+22. <div>
+   Classes: modal-overlay
+
+23. <div>
+   Classes: search-modal__content search-modal__content-bottom
+   Content: SearchSearchPopular search:LehengasKurta SetsSareesFusion WearSherwani SetsMen's Kurta SetsMen's Jacket Sets...
+
+24. <div>
+   Classes: field
+   Content: SearchSearch...
+
+25. <div>
+   Classes: predictive-search predictive-search--header
+
+26. <div>
+   Classes: predictive-search__loading-state
+
+27. <div>
+   Classes: Popular-ssearch-text
+   Content: Popular search:LehengasKurta SetsSareesFusion WearSherwani SetsMen's Kurta SetsMen's Jacket Sets...
+
+28. <div>
+   Classes: popular-link-list
+   Content: LehengasKurta SetsSareesFusion WearSherwani SetsMen's Kurta SetsMen's Jacket Sets...
+
+29. <div>
+   Classes: themes-tab
+   Content: CoutureJewellery...
+
+30. <div>
+   Classes: theme-tab-content
+   Content: CoutureJewellery...
+
+31. <div>
+   Classes: header__heading-logo-wrapper desktop-logo first_logo_wrapper sf-hidden
+
+32. <div>
+   Classes: header__heading-logo-wrapper desktop-logo second_logo_wrapper
+
+33. <div>
+   Classes: header__heading-logo-wrapper mobile-logo sf-hidden
+
+34. <nav>
+   Classes: header__inline-menu header-mega-menu
+   Content: High JewelleryFine JewelleryEarringsRingsBangles & BraceletsNecklacesView AllMenswear JewelleryIn the SpotlightAbout Us...
+
+35. <div>
+   ID: MegaMenu-Content-2
+   Classes: mega-menu__content motion-reduce global-settings-popup lr-inherit
+   Content: EarringsRingsBangles & BraceletsNecklacesView All...
+
+36. <div>
+   Classes: megamenu-main-row-part page-width
+   Content: EarringsRingsBangles & BraceletsNecklacesView All...
+
+37. <div>
+   Classes: header__icons
+   Content: SearchSearchSearchPopular search:LehengasKurta SetsSareesFusion WearSherwani SetsMen's Kurta SetsMen's Jacket Sets0CartLog in...
+
+38. <div>
+   Classes: search-modal modal__content
+   Content: SearchSearchPopular search:LehengasKurta SetsSareesFusion WearSherwani SetsMen's Kurta SetsMen's Jacket Sets...
+
+39. <div>
+   Classes: modal-overlay
+
+40. <div>
+   Classes: search-modal__content search-modal__content-bottom
+   Content: SearchSearchPopular search:LehengasKurta SetsSareesFusion WearSherwani SetsMen's Kurta SetsMen's Jacket Sets...
+
+41. <div>
+   Classes: field
+   Content: SearchSearch...
+
+42. <div>
+   Classes: predictive-search predictive-search--header
+
+43. <div>
+   Classes: predictive-search__loading-state
+
+44. <div>
+   Classes: Popular-ssearch-text
+   Content: Popular search:LehengasKurta SetsSareesFusion WearSherwani SetsMen's Kurta SetsMen's Jacket Sets...
+
+45. <div>
+   Classes: popular-link-list
+   Content: LehengasKurta SetsSareesFusion WearSherwani SetsMen's Kurta SetsMen's Jacket Sets...
+
+46. <div>
+   Classes: count-bubble
+   Content: 0...
+
+47. <main>
+   ID: MainContent
+   Classes: content-for-layout focus-none
+   Content: COCO JONES, MET GALA 2025HIGH JEWELLERYOUR STATEMENT NECKLACESFeaturing over 30 carats of tanzanites,alongside diamonds and a gracefulcascade of pearl...
+
+48. <div>
+   ID: shopify-section-template--19496855240804__hero_slideshow_ewtd38
+   Classes: shopify-section
+   Content: COCO JONES, MET GALA 2025HIGH JEWELLERY...
+
+49. <div>
+   Classes: hero-slideshow home-slideshow-section section-template--19496855240804__hero_slideshow_ewtd38 full_width
+   Content: COCO JONES, MET GALA 2025HIGH JEWELLERY...
+
+50. <div>
+   Classes: slider_section
+   Content: COCO JONES, MET GALA 2025HIGH JEWELLERY...
