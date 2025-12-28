@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JMC Jewellery</title>
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918854/logo_small_gjrydu.png">
     <style>
         :root {
             /* Colors */
@@ -174,7 +175,13 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
+        }
+
+        .logo-image {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
         }
 
         .diamond-icon {
@@ -2385,6 +2392,10 @@
             }
 
             /* Logo - smaller size */
+            .logo-image {
+                height: 35px;
+            }
+
             .logo-text {
                 font-size: 24px;
             }
@@ -2588,10 +2599,7 @@
         <div class="header-center">
             <div class="logo-container">
                 <div class="logo">
-                    <svg class="diamond-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2L2 9L12 22L22 9L12 2Z" fill="currentColor"/>
-                        <path d="M12 2L7 9H17L12 2Z" fill="#fff" opacity="0.3"/>
-                    </svg>
+                    <img src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918854/logo_small_gjrydu.png" alt="JMC Jewellery Logo" class="logo-image">
                     <span class="logo-text">JMC</span>
                 </div>
                 <span class="logo-tagline">SINCE 1949</span>
