@@ -13,7 +13,10 @@
       "Bash(python verify_jmc_conversion.py:*)",
       "Bash(python:*)",
       "Bash(test:*)",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(git mv:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   }
 }
