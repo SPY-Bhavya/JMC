@@ -1,0 +1,15 @@
+*.py
+*.txt
+*.md
+*.zip
+*.png
+jmc images.zip
+Gemini_Generated_Image_*
+*_Original.html
+*_Themed*.html
+*_Website*.html
+Manish_Malhotra_*.html
+index.html
+JMC.html
+.git
+.claude
