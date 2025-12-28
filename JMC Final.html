@@ -1,0 +1,3270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JMC Jewellery</title>
+    <style>
+        :root {
+            /* Colors */
+            --color-primary: #2c5f5f;
+            --color-primary-dark: #1a3a3a;
+            --color-text: #333;
+            --color-text-light: #666;
+            --color-bg: #f5f5f5;
+            --color-bg-alt: #f9f9f9;
+            --color-white: #fff;
+
+            /* Spacing */
+            --spacing-xs: 10px;
+            --spacing-sm: 20px;
+            --spacing-md: 40px;
+            --spacing-lg: 60px;
+            --spacing-xl: 80px;
+            --spacing-xxl: 100px;
+
+            /* Font Sizes */
+            --font-xs: 11px;
+            --font-sm: 13px;
+            --font-base: 15px;
+            --font-md: 16px;
+            --font-lg: 24px;
+            --font-xl: 32px;
+            --font-xxl: 48px;
+            --font-hero: 72px;
+
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--color-bg);
+        }
+
+        /* Screen reader only content */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Unified Button System */
+        .btn {
+            background-color: transparent;
+            border: 2px solid;
+            padding: 14px 40px;
+            font-size: var(--font-sm);
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all var(--transition-slow);
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .btn:focus {
+            outline: 3px solid rgba(44, 95, 95, 0.5);
+            outline-offset: 2px;
+        }
+
+        /* Button Variants */
+        .btn-light {
+            color: var(--color-white);
+            border-color: var(--color-white);
+        }
+
+        .btn-light:hover {
+            background-color: var(--color-white);
+            color: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+        }
+
+        .btn-primary {
+            color: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(44, 95, 95, 0.3);
+        }
+
+        .btn-dark {
+            color: var(--color-white);
+            border-color: var(--color-white);
+        }
+
+        .btn-dark:hover {
+            background-color: var(--color-white);
+            color: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255,255,255,0.2);
+        }
+
+        /* Top Header Bar */
+        .top-bar {
+            background-color: #2c2c2c;
+            height: 4px;
+        }
+
+        /* Main Header */
+        .header {
+            background-color: #f5f5f5;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Left Section - Collections Buttons */
+        .header-left {
+            display: flex;
+            gap: 10px;
+        }
+
+        .collection-btn {
+            padding: 8px 20px;
+            background-color: transparent;
+            border: none;
+            font-size: 15px;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .collection-btn.active {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+
+        .collection-btn:hover {
+            background-color: #e8e8e8;
+        }
+
+        /* Center Section - Logo */
+        .header-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .diamond-icon {
+            width: 20px;
+            height: 20px;
+            fill: #2c5f5f;
+        }
+
+        .logo-text {
+            font-size: 42px;
+            font-weight: bold;
+            color: #2c5f5f;
+            letter-spacing: 2px;
+        }
+
+        .logo-tagline {
+            font-size: 11px;
+            color: #666;
+            letter-spacing: 3px;
+            margin-top: -5px;
+        }
+
+        /* Right Section - Icons */
+        .header-right {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .icon-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .icon-btn svg {
+            width: 24px;
+            height: 24px;
+            stroke: #333;
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            background-color: #f5f5f5;
+            padding: 20px 40px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .nav-list {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #2c5f5f;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #2c5f5f;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .header {
+                padding: 15px 20px;
+            }
+
+            .nav-list {
+                gap: 30px;
+            }
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: var(--color-text);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .header-left {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--color-white);
+                flex-direction: column;
+                padding: var(--spacing-xl) var(--spacing-md);
+                box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+                z-index: 1000;
+                transition: left 0.3s ease;
+            }
+
+            .header-left.active {
+                left: 0;
+            }
+
+            .logo-text {
+                font-size: 32px;
+            }
+
+            .nav-list {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .nav-link {
+                font-size: 14px;
+            }
+        }
+
+        /* Hero Banner Section */
+        .hero-banner {
+            position: relative;
+            height: 600px;
+            background-image: url('images/JMC_Rushali_9sept20_8885.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-subtitle {
+            font-size: 13px;
+            letter-spacing: 4px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+
+        .hero-title {
+            font-size: 72px;
+            font-weight: 300;
+            letter-spacing: 12px;
+            line-height: 1.2;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+        }
+
+
+        /* Navigation Arrows */
+        .hero-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 3;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-nav:hover {
+            background: rgba(255,255,255,0.4);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .hero-nav-prev {
+            left: 30px;
+        }
+
+        .hero-nav-next {
+            right: 30px;
+        }
+
+        .hero-nav svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Slide Indicators */
+        .hero-indicators {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 3;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: white;
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        .indicator:hover {
+            background: rgba(255,255,255,0.7);
+        }
+
+        /* Responsive Hero */
+        @media (max-width: 768px) {
+            .hero-banner {
+                height: 500px;
+            }
+
+            .hero-title {
+                font-size: 48px;
+                letter-spacing: 8px;
+            }
+
+            .hero-subtitle {
+                font-size: 11px;
+                letter-spacing: 3px;
+            }
+
+            .hero-nav {
+                width: 40px;
+                height: 40px;
+            }
+
+            .hero-nav-prev {
+                left: 15px;
+            }
+
+            .hero-nav-next {
+                right: 15px;
+            }
+        }
+
+        /* Statement Necklaces Section */
+        .statement-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 700px;
+        }
+
+        .statement-content {
+            background-color: var(--color-primary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-xl) var(--spacing-lg);
+        }
+
+        .statement-text {
+            color: white;
+            max-width: 500px;
+        }
+
+        .statement-title {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            line-height: 1.3;
+            margin-bottom: 30px;
+            font-family: Georgia, serif;
+        }
+
+        .statement-description {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 50px;
+            color: #e0e0e0;
+            font-weight: 300;
+        }
+
+        /* .statement-btn - removed, use .btn .btn-light */
+
+        .statement-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .statement-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .statement-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Responsive Statement Section */
+        @media (max-width: 1024px) {
+            .statement-section {
+                grid-template-columns: 1fr;
+            }
+
+            .statement-content {
+                padding: 60px 40px;
+            }
+
+            .statement-image {
+                min-height: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .statement-title {
+                font-size: 36px;
+            }
+
+            .statement-description {
+                font-size: 15px;
+            }
+
+            .statement-content {
+                padding: 50px 30px;
+            }
+
+            .statement-image {
+                min-height: 400px;
+            }
+        }
+
+        /* Amara Necklace Section */
+        .amara-section {
+            background-color: var(--color-primary-dark);
+            padding: var(--spacing-xl) var(--spacing-md) var(--spacing-lg);
+        }
+
+        .amara-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .amara-title {
+            font-size: 32px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            font-family: Georgia, serif;
+        }
+
+        .amara-subtitle {
+            font-size: 15px;
+            line-height: 1.9;
+            color: #e0e0e0;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .amara-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+            max-width: 1400px;
+            margin: 0 auto 50px;
+        }
+
+        .amara-image-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+        }
+
+        .amara-image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .amara-image-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .amara-cta {
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        /* .amara-btn - removed, use .btn .btn-light */
+
+        /* Responsive Amara Section */
+        @media (max-width: 1024px) {
+            .amara-section {
+                padding: 60px 30px 50px;
+            }
+
+            .amara-title {
+                font-size: 28px;
+            }
+
+            .amara-subtitle {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .amara-images {
+                grid-template-columns: 1fr;
+            }
+
+            .amara-section {
+                padding: 50px 20px 40px;
+            }
+
+            .amara-title {
+                font-size: 24px;
+                letter-spacing: 3px;
+            }
+
+            .amara-subtitle {
+                font-size: 13px;
+                padding: 0 15px;
+            }
+
+            .amara-subtitle br {
+                display: none;
+            }
+
+        }
+
+        /* Statement Earrings Section */
+        .earrings-section {
+            position: relative;
+            height: 700px;
+            background-image: url('images/JMC_7aug22_8335.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .earrings-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        .earrings-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+
+        .earrings-title {
+            font-size: 52px;
+            font-weight: 300;
+            letter-spacing: 6px;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.4);
+            font-family: Georgia, serif;
+        }
+
+        /* .earrings-btn - removed, use .btn .btn-light */
+
+        /* Responsive Earrings Section */
+        @media (max-width: 1024px) {
+            .earrings-section {
+                height: 600px;
+            }
+
+            .earrings-title {
+                font-size: 42px;
+                letter-spacing: 5px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .earrings-section {
+                height: 500px;
+            }
+
+            .earrings-title {
+                font-size: 32px;
+                letter-spacing: 4px;
+                padding: 0 20px;
+            }
+
+        }
+
+        /* Signature Haathphool Section */
+        .haathphool-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 700px;
+        }
+
+        .haathphool-left {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .haathphool-left-top {
+            background: linear-gradient(180deg, #f5f5f5 0%, #e8e8e8 100%);
+            padding: 60px 40px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .haathphool-left-jewel-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid rgba(26, 58, 58, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .haathphool-left-jewel-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .haathphool-left-image {
+            flex: 1;
+            background-image: url('images/JMC_Rushali_9sept20_8908.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .haathphool-left-content {
+            background-color: #1a3a3a;
+            padding: 50px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .haathphool-title {
+            color: white;
+            font-size: 38px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            line-height: 1.3;
+            font-family: Georgia, serif;
+            text-align: center;
+            margin: 0;
+        }
+
+        .haathphool-right {
+            background-image: url('images/JMC_7aug22_8666.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 40px;
+        }
+
+        .haathphool-right::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .haathphool-jewel-image {
+            position: relative;
+            z-index: 2;
+            width: 300px;
+            height: 300px;
+            margin-bottom: 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .haathphool-jewel-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .haathphool-right-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-align: center;
+            padding: 40px;
+            max-width: 600px;
+        }
+
+        .haathphool-description {
+            font-size: 16px;
+            line-height: 1.9;
+            margin-bottom: 40px;
+            font-weight: 300;
+            color: #f5f5f5;
+        }
+
+        /* .haathphool-btn - removed, use .btn .btn-light */
+
+        /* Responsive Haathphool Section */
+        @media (max-width: 1024px) {
+            .haathphool-section {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .haathphool-left {
+                min-height: 600px;
+            }
+
+            .haathphool-right {
+                min-height: 500px;
+                padding: 50px 30px;
+            }
+
+            .haathphool-left-top {
+                padding: 50px 30px 30px;
+            }
+
+            .haathphool-left-jewel-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .haathphool-left-content {
+                padding: 40px 40px;
+                gap: 25px;
+            }
+
+            .haathphool-title {
+                font-size: 32px;
+            }
+
+            .haathphool-jewel-image {
+                width: 250px;
+                height: 250px;
+                margin-bottom: 25px;
+            }
+
+            .haathphool-description {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .haathphool-left {
+                min-height: 500px;
+            }
+
+            .haathphool-right {
+                min-height: 450px;
+                padding: 40px 20px;
+            }
+
+            .haathphool-left-top {
+                padding: 40px 20px 25px;
+            }
+
+            .haathphool-left-jewel-image {
+                width: 170px;
+                height: 170px;
+            }
+
+            .haathphool-left-content {
+                padding: 40px 30px;
+                gap: 20px;
+            }
+
+            .haathphool-title {
+                font-size: 26px;
+                letter-spacing: 3px;
+            }
+
+            .haathphool-jewel-image {
+                width: 200px;
+                height: 200px;
+                margin-bottom: 20px;
+            }
+
+            .haathphool-right-content {
+                padding: 0;
+            }
+
+            .haathphool-description {
+                font-size: 14px;
+                padding: 0 10px;
+            }
+
+            .haathphool-description br {
+                display: none;
+            }
+
+        }
+
+        /* Featured Collections Section */
+        .featured-collections {
+            background-color: var(--color-bg-alt);
+            padding: var(--spacing-xxl) var(--spacing-md);
+        }
+
+        .collections-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .collections-main-title {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: #2c5f5f;
+            margin-bottom: 15px;
+            font-family: Georgia, serif;
+        }
+
+        .collections-subtitle {
+            font-size: 16px;
+            color: #666;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .collection-block {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 100px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .collection-block.reverse {
+            grid-template-columns: 1.5fr 1fr;
+        }
+
+        .collection-text {
+            padding: 40px;
+        }
+
+        .collection-title {
+            font-size: 36px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: #1a3a3a;
+            margin-bottom: 25px;
+            font-family: Georgia, serif;
+        }
+
+        .collection-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 35px;
+            font-weight: 300;
+        }
+
+        /* Collection section button - use .btn .btn-primary for these */
+
+        /* Collection Carousel */
+        .collection-carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .collection-carousel {
+            position: relative;
+            height: 500px;
+        }
+
+        .collection-carousel .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            pointer-events: none;
+        }
+
+        .collection-carousel .carousel-item.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .collection-carousel .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.9);
+            border: none;
+            color: var(--color-primary);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-nav:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-prev {
+            left: 20px;
+        }
+
+        .carousel-next {
+            right: 20px;
+        }
+
+        .carousel-nav svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .collection-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .collection-image-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            border-radius: 4px;
+        }
+
+        .collection-image-item.large {
+            grid-row: span 2;
+        }
+
+        .collection-image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .collection-image-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            padding: 30px 20px 20px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .collection-image-item:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .image-label {
+            color: white;
+            font-size: 14px;
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+
+        /* The Luxe Edit Special Layout */
+        .collection-block.luxe-edit {
+            grid-template-columns: 1fr;
+            background: linear-gradient(135deg, #1a3a3a 0%, #2c5f5f 100%);
+            padding: 80px 60px;
+            border-radius: 8px;
+            margin-bottom: 0;
+        }
+
+        .luxe-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .luxe-title {
+            color: white;
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .luxe-desc {
+            color: #e8e8e8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .luxe-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .luxe-image-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            border-radius: 4px;
+        }
+
+        .luxe-image-item.luxe-large {
+            grid-row: span 2;
+        }
+
+        .luxe-image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .luxe-image-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .luxe-cta {
+            text-align: center;
+        }
+
+        /* .luxe-btn - removed, use .btn .btn-light */
+
+        /* Responsive Featured Collections */
+        @media (max-width: 1200px) {
+            .collection-block,
+            .collection-block.reverse {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .luxe-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .luxe-image-item.luxe-large {
+                grid-row: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .featured-collections {
+                padding: 60px 20px;
+            }
+
+            .collections-header {
+                margin-bottom: 50px;
+            }
+
+            .collections-main-title {
+                font-size: 32px;
+            }
+
+            .collection-block {
+                margin-bottom: 60px;
+            }
+
+            .collection-text {
+                padding: 20px;
+            }
+
+            .collection-title {
+                font-size: 28px;
+                letter-spacing: 3px;
+            }
+
+            .collection-description {
+                font-size: 15px;
+            }
+
+            .collection-images {
+                grid-template-columns: 1fr;
+            }
+
+            .collection-image-item.large {
+                grid-row: span 1;
+            }
+
+            .collection-block.luxe-edit {
+                padding: 50px 30px;
+            }
+
+            .luxe-title {
+                font-size: 28px;
+            }
+
+            .luxe-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        /* Occasion Edit Section */
+        .occasion-edit {
+            background-color: var(--color-white);
+            padding: var(--spacing-xxl) var(--spacing-md);
+        }
+
+        .occasion-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .occasion-main-title {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: #1a3a3a;
+            margin-bottom: 15px;
+            font-family: Georgia, serif;
+        }
+
+        .occasion-subtitle {
+            font-size: 16px;
+            color: #666;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .occasion-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto 80px;
+        }
+
+        .occasion-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .occasion-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .occasion-image {
+            position: relative;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+        }
+
+        .occasion-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .occasion-card:hover .occasion-image img {
+            transform: scale(1.1);
+        }
+
+        .occasion-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.7) 100%);
+        }
+
+        .occasion-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 25px;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .occasion-title {
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            color: white;
+            margin-bottom: 10px;
+            font-family: Georgia, serif;
+        }
+
+        .occasion-desc {
+            font-size: 14px;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* .occasion-btn - use .btn .btn-light with custom reveal animation */
+        .occasion-card .btn {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease;
+        }
+
+        .occasion-card:hover .btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Occasion Ready Banner */
+        .occasion-ready-banner {
+            background: linear-gradient(135deg, #2c5f5f 0%, #1a3a3a 100%);
+            padding: 80px 60px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .occasion-ready-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .occasion-ready-title {
+            font-size: 42px;
+            font-weight: 300;
+            letter-spacing: 5px;
+            color: white;
+            margin-bottom: 25px;
+            font-family: Georgia, serif;
+        }
+
+        .occasion-ready-text {
+            font-size: 17px;
+            line-height: 1.9;
+            color: #e8e8e8;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        /* .occasion-ready-btn - removed, use .btn .btn-light */
+
+        /* Responsive Occasion Edit */
+        @media (max-width: 1200px) {
+            .occasion-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .occasion-edit {
+                padding: 60px 20px;
+            }
+
+            .occasion-header {
+                margin-bottom: 50px;
+            }
+
+            .occasion-main-title {
+                font-size: 32px;
+            }
+
+            .occasion-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-bottom: 50px;
+            }
+
+
+            .occasion-card .btn {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .occasion-ready-banner {
+                padding: 50px 30px;
+            }
+
+            .occasion-ready-title {
+                font-size: 28px;
+                letter-spacing: 3px;
+            }
+
+            .occasion-ready-text {
+                font-size: 15px;
+            }
+
+            .occasion-ready-text br {
+                display: none;
+            }
+        }
+
+        /* Signature Styles Section */
+        .signature-styles {
+            background-color: var(--color-bg-alt);
+            padding: var(--spacing-xxl) var(--spacing-md);
+        }
+
+        /* The Signature Line */
+        .signature-line-section {
+            max-width: 1400px;
+            margin: 0 auto 120px;
+        }
+
+        .signature-line-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .signature-main-title {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: #1a3a3a;
+            margin-bottom: 15px;
+            font-family: Georgia, serif;
+        }
+
+        .signature-subtitle {
+            font-size: 16px;
+            color: #666;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .signature-showcase {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .signature-main-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 4/5;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .signature-main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .signature-main-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .signature-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+            padding: 50px 40px;
+            transform: translateY(60%);
+            transition: transform 0.5s ease;
+        }
+
+        .signature-main-image:hover .signature-overlay {
+            transform: translateY(0);
+        }
+
+        .signature-overlay-content {
+            color: white;
+        }
+
+        .signature-piece-name {
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-family: Georgia, serif;
+        }
+
+        .signature-piece-desc {
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* .signature-overlay-btn - removed, use .btn .btn-light */
+
+        .signature-details-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .signature-detail-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .signature-detail-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .signature-detail-image {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .signature-detail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .signature-detail-card:hover .signature-detail-image img {
+            transform: scale(1.1);
+        }
+
+        .signature-detail-content {
+            padding: 25px;
+        }
+
+        .signature-detail-title {
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: #1a3a3a;
+            margin-bottom: 8px;
+            font-family: Georgia, serif;
+        }
+
+        .signature-detail-text {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Iconic Silhouettes */
+        .iconic-silhouettes-section {
+            background: linear-gradient(135deg, #1a3a3a 0%, #2c5f5f 100%);
+            padding: 100px 60px;
+            border-radius: 8px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .iconic-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .iconic-title {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: 5px;
+            color: white;
+            margin-bottom: 20px;
+            font-family: Georgia, serif;
+        }
+
+        .iconic-subtitle {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #e8e8e8;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .iconic-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .iconic-item {
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.4s ease, background 0.4s ease;
+        }
+
+        .iconic-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .iconic-item.iconic-large {
+            grid-row: span 2;
+        }
+
+        .iconic-image {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .iconic-item.iconic-large .iconic-image {
+            height: 400px;
+        }
+
+        .iconic-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .iconic-item:hover .iconic-image img {
+            transform: scale(1.1);
+        }
+
+        .iconic-content {
+            padding: 30px 25px;
+        }
+
+        .iconic-label {
+            display: inline-block;
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: #d4af37;
+            border: 1px solid #d4af37;
+            padding: 4px 12px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .iconic-item-title {
+            font-size: 22px;
+            font-weight: 300;
+            letter-spacing: 1px;
+            color: white;
+            margin-bottom: 12px;
+            font-family: Georgia, serif;
+        }
+
+        .iconic-item-desc {
+            font-size: 14px;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 20px;
+        }
+
+        /* .iconic-btn - removed, use .btn .btn-light */
+
+        .iconic-cta {
+            text-align: center;
+        }
+
+        /* .iconic-main-btn - removed, use .btn .btn-light */
+
+        /* Responsive Signature Styles */
+        @media (max-width: 1200px) {
+            .signature-showcase {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .signature-details-grid {
+                flex-direction: row;
+            }
+
+            .iconic-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .iconic-item.iconic-large {
+                grid-row: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .signature-styles {
+                padding: 60px 20px;
+            }
+
+            .signature-line-section {
+                margin-bottom: 80px;
+            }
+
+            .signature-line-header,
+            .iconic-header {
+                margin-bottom: 50px;
+            }
+
+            .signature-main-title,
+            .iconic-title {
+                font-size: 32px;
+            }
+
+            .signature-overlay {
+                transform: translateY(0);
+            }
+
+            .signature-details-grid {
+                flex-direction: column;
+            }
+
+            .iconic-silhouettes-section {
+                padding: 60px 30px;
+            }
+
+            .iconic-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .iconic-subtitle br {
+                display: none;
+            }
+        }
+
+        /* Explore by Category Section */
+        .explore-category {
+            background-color: #fff;
+            padding: 100px 40px;
+        }
+
+        /* By Style Section */
+        .by-style-section {
+            max-width: 1400px;
+            margin: 0 auto 120px;
+        }
+
+        .by-style-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .by-style-title {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: 5px;
+            color: #1a3a3a;
+            margin-bottom: 15px;
+            font-family: Georgia, serif;
+        }
+
+        .by-style-subtitle {
+            font-size: 16px;
+            color: #666;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .style-categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .style-category {
+            background: #f9f9f9;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .style-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .style-image-wrapper {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .style-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .style-category:hover .style-image-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .style-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.8) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .style-category:hover .style-overlay {
+            opacity: 1;
+        }
+
+        .style-overlay-content {
+            color: white;
+            text-align: center;
+            width: 100%;
+        }
+
+        .style-category-name {
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            font-family: Georgia, serif;
+        }
+
+        .style-category-desc {
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* .style-explore-btn - removed, use .btn .btn-light */
+
+        .style-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .style-info-title {
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: #1a3a3a;
+            margin-bottom: 10px;
+            font-family: Georgia, serif;
+        }
+
+        .style-info-text {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Curated for You Section */
+        .curated-section {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            padding: 80px 60px;
+            border-radius: 8px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .curated-content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .curated-label {
+            display: inline-block;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: #2c5f5f;
+            border: 1px solid #2c5f5f;
+            padding: 6px 15px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .curated-title {
+            font-size: 42px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: #1a3a3a;
+            margin-bottom: 25px;
+            font-family: Georgia, serif;
+        }
+
+        .curated-description {
+            font-size: 16px;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .curated-features {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .curated-feature {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            color: #2c5f5f;
+            flex-shrink: 0;
+        }
+
+        .feature-text h4 {
+            font-size: 16px;
+            font-weight: 500;
+            color: #1a3a3a;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .feature-text p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Curated section - special filled button variant */
+        .btn-primary-filled {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+
+        .btn-primary-filled:hover {
+            background-color: transparent;
+            color: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(44, 95, 95, 0.3);
+        }
+
+        .curated-image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .curated-image-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 3/4;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .curated-image-item.curated-large {
+            grid-row: span 2;
+        }
+
+        .curated-image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .curated-image-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Responsive Explore Category */
+        @media (max-width: 1200px) {
+            .style-categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .curated-content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .explore-category {
+                padding: 60px 20px;
+            }
+
+            .by-style-section {
+                margin-bottom: 80px;
+            }
+
+            .by-style-header {
+                margin-bottom: 50px;
+            }
+
+            .by-style-title {
+                font-size: 32px;
+            }
+
+            .style-categories {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .style-image-wrapper {
+                height: 350px;
+            }
+
+            .style-overlay {
+                opacity: 1;
+                background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.8) 100%);
+            }
+
+            .curated-section {
+                padding: 50px 30px;
+            }
+
+            .curated-title {
+                font-size: 32px;
+            }
+
+            .curated-description {
+                font-size: 15px;
+            }
+
+            .curated-image-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .curated-image-item.curated-large {
+                grid-row: span 1;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #f5f5f5;
+            border-top: 1px solid #e0e0e0;
+            padding: 80px 40px 30px;
+        }
+
+        .footer-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 2fr;
+            gap: 80px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .footer-newsletter {
+            max-width: 400px;
+        }
+
+        .newsletter-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #d0d0d0;
+            background: white;
+            font-size: 14px;
+            color: #333;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .newsletter-input:focus {
+            border-color: #2c5f5f;
+        }
+
+        .newsletter-input::placeholder {
+            color: #999;
+        }
+
+        .newsletter-submit {
+            background-color: transparent;
+            color: #333;
+            border: 1px solid #d0d0d0;
+            padding: 12px 25px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .newsletter-submit:hover {
+            background-color: #2c5f5f;
+            color: white;
+            border-color: #2c5f5f;
+        }
+
+        .newsletter-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 40px;
+            cursor: pointer;
+        }
+
+        .newsletter-checkbox input {
+            cursor: pointer;
+        }
+
+        .terms-link {
+            color: #333;
+            text-decoration: underline;
+        }
+
+        .footer-stores {
+            margin-top: 30px;
+        }
+
+        .stores-text {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .find-store-link {
+            font-size: 14px;
+            color: #333;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+        }
+
+        .footer-column {
+        }
+
+        .footer-heading {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .footer-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-list a {
+            font-size: 14px;
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-list a:hover {
+            color: #2c5f5f;
+        }
+
+        .footer-social {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 20px;
+            padding: 40px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #2c5f5f;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+        }
+
+        .footer-copyright,
+        .footer-designer {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .footer-currency {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .currency-flag {
+            font-size: 18px;
+        }
+
+        .currency-code {
+            font-weight: 500;
+        }
+
+        /* Responsive Footer */
+        @media (max-width: 1024px) {
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .footer-links {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                padding: 50px 20px 20px;
+            }
+
+            .footer-main {
+                gap: 40px;
+                padding-bottom: 40px;
+            }
+
+            .footer-newsletter {
+                max-width: 100%;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .footer-links {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .footer-social {
+                justify-content: center;
+                padding: 30px 0;
+            }
+
+            .footer-bottom {
+                padding-top: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar"></div>
+    
+    <header class="header">
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Left Section -->
+        <div class="header-left">
+            <button class="collection-btn">Collections</button>
+            <button class="collection-btn active">Jewellery</button>
+        </div>
+
+        <!-- Center Section - Logo -->
+        <div class="header-center">
+            <div class="logo-container">
+                <div class="logo">
+                    <svg class="diamond-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 9L12 22L22 9L12 2Z" fill="currentColor"/>
+                        <path d="M12 2L7 9H17L12 2Z" fill="#fff" opacity="0.3"/>
+                    </svg>
+                    <span class="logo-text">JMC</span>
+                </div>
+                <span class="logo-tagline">SINCE 1949</span>
+            </div>
+        </div>
+
+        <!-- Right Section - Icons -->
+        <div class="header-right">
+            <button class="icon-btn" aria-label="Search">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="M21 21l-4.35-4.35"/>
+                </svg>
+            </button>
+            
+            <button class="icon-btn" aria-label="Wishlist">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+            </button>
+            
+            <button class="icon-btn" aria-label="Cart">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 0 1-8 0"/>
+                </svg>
+            </button>
+            
+            <button class="icon-btn" aria-label="Account">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-menu">
+        <ul class="nav-list">
+            <li><a href="#" class="nav-link">Bridal Collection</a></li>
+            <li><a href="#" class="nav-link">Fine Jewellery</a></li>
+            <li><a href="#" class="nav-link">Mens Jewellery</a></li>
+            <li><a href="#" class="nav-link">Featured Collections</a></li>
+            <li><a href="#" class="nav-link">About Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Banner Section -->
+    <section class="hero-banner">
+        <button class="hero-nav hero-nav-prev" aria-label="Previous slide">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 18l-6-6 6-6" stroke="currentColor" fill="none" stroke-width="2"/>
+            </svg>
+        </button>
+        
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="hero-subtitle">IN THE SPOTLIGHT</p>
+                <h1 class="hero-title">HIGH<br>JEWELLERY</h1>
+                <button class="btn btn-light">EXPLORE COLLECTION</button>
+            </div>
+        </div>
+        
+        <button class="hero-nav hero-nav-next" aria-label="Next slide">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 18l6-6-6-6" stroke="currentColor" fill="none" stroke-width="2"/>
+            </svg>
+        </button>
+        
+        <div class="hero-indicators">
+            <span class="indicator active"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+        </div>
+    </section>
+
+    <!-- Statement Necklaces Section -->
+    <section class="statement-section">
+        <div class="statement-content">
+            <div class="statement-text">
+                <h2 class="statement-title">OUR STATEMENT<br>NECKLACES</h2>
+                <p class="statement-description">
+                    Featuring over 30 carats of tanzanites,<br>
+                    alongside diamonds and a graceful<br>
+                    cascade of pearls.
+                </p>
+                <button class="btn btn-light">ENQUIRE</button>
+            </div>
+        </div>
+        <div class="statement-image">
+            <img loading="lazy" src="images/JMC_7aug22_8335.jpg" alt="Statement Necklace">
+        </div>
+    </section>
+
+    <!-- Amara Necklace Section -->
+    <section class="amara-section">
+        <div class="amara-header">
+            <h2 class="amara-title">OUR AMARA NECKLACE</h2>
+            <p class="amara-subtitle">
+                Radiant through one atelier's contemporary<br>
+                craftsmanship, a true ruby drop of over 18 carats anchors our structured necklace,<br>
+                whose exquisite ribbon motif is brilliantly crafted of diamonds.
+            </p>
+        </div>
+        
+        <div class="amara-images">
+            <div class="amara-image-item">
+                <img loading="lazy" src="images/JMC_28april24_89123.jpg" alt="Amara Necklace 1">
+            </div>
+            <div class="amara-image-item">
+                <img loading="lazy" src="images/JMC_28april24_89469.jpg" alt="Amara Necklace 2">
+            </div>
+        </div>
+        
+        <div class="amara-cta">
+            <button class="btn btn-light">ENQUIRE</button>
+        </div>
+    </section>
+
+    <!-- Statement Earrings Section -->
+    <section class="earrings-section">
+        <div class="earrings-overlay"></div>
+        <div class="earrings-content">
+            <h2 class="earrings-title">OUR STATEMENT EARRINGS</h2>
+            <button class="btn btn-light">ENQUIRE</button>
+        </div>
+    </section>
+
+    <!-- Signature Haathphool Section -->
+    <section class="haathphool-section">
+        <div class="haathphool-left">
+            <div class="haathphool-left-top">
+                <div class="haathphool-left-jewel-image">
+                    <img loading="lazy" src="images/JMC_7aug22_8403.jpg" alt="Haathphool Jewelry Detail">
+                </div>
+            </div>
+            <div class="haathphool-left-image"></div>
+            <div class="haathphool-left-content">
+                <h2 class="haathphool-title">OUR SIGNATURE HAATHPHOOL</h2>
+            </div>
+        </div>
+        <div class="haathphool-right">
+            <div class="haathphool-jewel-image">
+                <img loading="lazy" src="images/JMC_7aug22_9530.jpg" alt="Haathphool Jewelry">
+            </div>
+            <div class="haathphool-right-content">
+                <p class="haathphool-description">
+                    A symbol of beauty and grace. Taking something deeply traditional<br>
+                    and making it feel modern, and truly ours. With brilliant and rose<br>
+                    cut diamonds, beautiful floral motifs and intricate craftsmanship, our<br>
+                    signature haathphool is meant to be cherished.
+                </p>
+                <button class="btn btn-light">ENQUIRE</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Collections Section -->
+    <section class="featured-collections">
+        <div class="collections-header">
+            <h2 class="collections-main-title">Featured Collections</h2>
+            <p class="collections-subtitle">Discover our curated selection of exquisite jewellery</p>
+        </div>
+
+        <!-- New Arrivals -->
+        <div class="collection-block">
+            <div class="collection-text">
+                <h3 class="collection-title">NEW ARRIVALS</h3>
+                <p class="collection-description">
+                    Discover the latest additions to our collection, featuring contemporary designs
+                    that blend traditional craftsmanship with modern elegance.
+                </p>
+                <button class="btn btn-primary">EXPLORE NOW</button>
+            </div>
+            <div class="collection-carousel-container">
+                <div class="collection-carousel" id="new-arrivals-carousel">
+                    <div class="carousel-item active">
+                        <img loading="lazy" src="images/JMC_28april24_89123.jpg" alt="New Arrival 1">
+                        <div class="image-overlay">
+                            <span class="image-label">Diamond Elegance</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img loading="lazy" src="images/JMC_28april24_89230.jpg" alt="New Arrival 2">
+                        <div class="image-overlay">
+                            <span class="image-label">Exquisite Collection</span>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img loading="lazy" src="images/JMC_28april24_89469.jpg" alt="New Arrival 3">
+                        <div class="image-overlay">
+                            <span class="image-label">Statement Pieces</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-nav carousel-prev" data-carousel="new-arrivals-carousel">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18l-6-6 6-6" stroke="currentColor" fill="none" stroke-width="2"/>
+                    </svg>
+                </button>
+                <button class="carousel-nav carousel-next" data-carousel="new-arrivals-carousel">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 18l6-6-6-6" stroke="currentColor" fill="none" stroke-width="2"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Season's Highlight -->
+        <div class="collection-block reverse">
+            <div class="collection-images">
+                <div class="collection-image-item">
+                    <img loading="lazy" src="images/JMC_7aug22_8026.jpg" alt="Season Highlight 1">
+                    <div class="image-overlay">
+                        <span class="image-label">Gold Heritage</span>
+                    </div>
+                </div>
+                <div class="collection-image-item">
+                    <img loading="lazy" src="images/JMC_7aug22_8205.jpg" alt="Season Highlight 2">
+                    <div class="image-overlay">
+                        <span class="image-label">Bridal Exclusive</span>
+                    </div>
+                </div>
+                <div class="collection-image-item large">
+                    <img loading="lazy" src="images/JMC_7aug22_8214.jpg" alt="Season Highlight 3">
+                    <div class="image-overlay">
+                        <span class="image-label">Gemstone Glory</span>
+                    </div>
+                </div>
+            </div>
+            <div class="collection-text">
+                <h3 class="collection-title">SEASON'S HIGHLIGHT</h3>
+                <p class="collection-description">
+                    Celebrate the season with our specially curated pieces that capture
+                    the essence of luxury and timeless beauty.
+                </p>
+                <button class="btn btn-primary">VIEW COLLECTION</button>
+            </div>
+        </div>
+
+        <!-- The Luxe Edit -->
+        <div class="collection-block luxe-edit">
+            <div class="luxe-header">
+                <h3 class="collection-title luxe-title">THE LUXE EDIT</h3>
+                <p class="collection-description luxe-desc">
+                    An exclusive selection of our most prestigious pieces, crafted for those who appreciate
+                    the finest in high jewellery and exceptional artistry.
+                </p>
+            </div>
+            <div class="luxe-grid">
+                <div class="luxe-image-item">
+                    <img loading="lazy" src="images/JMC_Rushali_9sept20_8885.jpg" alt="Luxe Edit 1">
+                    <div class="image-overlay">
+                        <span class="image-label">Signature Collection</span>
+                    </div>
+                </div>
+                <div class="luxe-image-item">
+                    <img loading="lazy" src="images/JMC_Rushali_9sept20_8908.jpg" alt="Luxe Edit 2">
+                    <div class="image-overlay">
+                        <span class="image-label">Royal Ensemble</span>
+                    </div>
+                </div>
+                <div class="luxe-image-item">
+                    <img loading="lazy" src="images/JMC_7aug22_8335.jpg" alt="Luxe Edit 3">
+                    <div class="image-overlay">
+                        <span class="image-label">Maharani Suite</span>
+                    </div>
+                </div>
+            </div>
+            <div class="luxe-cta">
+                <button class="btn btn-light">DISCOVER THE COLLECTION</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Occasion Edit Section -->
+    <section class="occasion-edit">
+        <div class="occasion-header">
+            <h2 class="occasion-main-title">Dressed for the Moment</h2>
+            <p class="occasion-subtitle">Curated collections for every special occasion in your life</p>
+        </div>
+
+        <div class="occasion-grid">
+            <!-- Bridal -->
+            <div class="occasion-card bridal">
+                <div class="occasion-image">
+                    <img loading="lazy" src="images/JMC_Rushali_9sept20_8885.jpg" alt="Bridal Collection">
+                </div>
+                <div class="occasion-content">
+                    <h3 class="occasion-title">BRIDAL</h3>
+                    <p class="occasion-desc">Timeless pieces for your most cherished day</p>
+                    <button class="btn btn-light">EXPLORE</button>
+                </div>
+            </div>
+
+            <!-- Evening -->
+            <div class="occasion-card evening">
+                <div class="occasion-image">
+                    <img loading="lazy" src="images/JMC_7aug22_9530.jpg" alt="Evening Collection">
+                </div>
+                <div class="occasion-content">
+                    <h3 class="occasion-title">EVENING</h3>
+                    <p class="occasion-desc">Elegant glamour for sophisticated soirées</p>
+                    <button class="btn btn-light">EXPLORE</button>
+                </div>
+            </div>
+
+            <!-- Cocktail -->
+            <div class="occasion-card cocktail">
+                <div class="occasion-image">
+                    <img loading="lazy" src="images/JMC_7aug22_8026.jpg" alt="Cocktail Collection">
+                </div>
+                <div class="occasion-content">
+                    <h3 class="occasion-title">COCKTAIL</h3>
+                    <p class="occasion-desc">Contemporary chic for modern celebrations</p>
+                    <button class="btn btn-light">EXPLORE</button>
+                </div>
+            </div>
+
+            <!-- Festive -->
+            <div class="occasion-card festive">
+                <div class="occasion-image">
+                    <img loading="lazy" src="images/JMC_7aug22_8214.jpg" alt="Festive Collection">
+                </div>
+                <div class="occasion-content">
+                    <h3 class="occasion-title">FESTIVE</h3>
+                    <p class="occasion-desc">Radiant designs for joyous celebrations</p>
+                    <button class="btn btn-light">EXPLORE</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Occasion Ready Banner -->
+        <div class="occasion-ready-banner">
+            <div class="occasion-ready-content">
+                <h2 class="occasion-ready-title">OCCASION READY</h2>
+                <p class="occasion-ready-text">
+                    From intimate gatherings to grand celebrations, find the perfect jewellery to complement every moment.<br>
+                    Our expert stylists are here to help you shine at every occasion.
+                </p>
+                <button class="btn btn-light">BOOK A CONSULTATION</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Styles Section -->
+    <section class="signature-styles">
+        <!-- The Signature Line -->
+        <div class="signature-line-section">
+            <div class="signature-line-header">
+                <h2 class="signature-main-title">THE SIGNATURE LINE</h2>
+                <p class="signature-subtitle">Iconic pieces that define our legacy of excellence</p>
+            </div>
+
+            <div class="signature-showcase">
+                <div class="signature-main-image">
+                    <img loading="lazy" src="images/JMC_28april24_89123.jpg" alt="Signature Piece">
+                    <div class="signature-overlay">
+                        <div class="signature-overlay-content">
+                            <h3 class="signature-piece-name">Heritage Maharani Collection</h3>
+                            <p class="signature-piece-desc">A masterpiece featuring over 500 individually set diamonds</p>
+                            <button class="btn btn-light">VIEW DETAILS</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="signature-details-grid">
+                    <div class="signature-detail-card">
+                        <div class="signature-detail-image">
+                            <img loading="lazy" src="images/JMC_7aug22_8403.jpg" alt="Signature Detail 1">
+                        </div>
+                        <div class="signature-detail-content">
+                            <h4 class="signature-detail-title">Timeless Elegance</h4>
+                            <p class="signature-detail-text">Crafted with meticulous attention to detail</p>
+                        </div>
+                    </div>
+
+                    <div class="signature-detail-card">
+                        <div class="signature-detail-image">
+                            <img loading="lazy" src="images/JMC_28april24_89230.jpg" alt="Signature Detail 2">
+                        </div>
+                        <div class="signature-detail-content">
+                            <h4 class="signature-detail-title">Master Craftsmanship</h4>
+                            <p class="signature-detail-text">Over 200 hours of artisanal work</p>
+                        </div>
+                    </div>
+
+                    <div class="signature-detail-card">
+                        <div class="signature-detail-image">
+                            <img loading="lazy" src="images/JMC_28april24_89469.jpg" alt="Signature Detail 3">
+                        </div>
+                        <div class="signature-detail-content">
+                            <h4 class="signature-detail-title">Heirloom Quality</h4>
+                            <p class="signature-detail-text">Designed to be treasured for generations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Iconic Silhouettes -->
+        <div class="iconic-silhouettes-section">
+            <div class="iconic-header">
+                <h2 class="iconic-title">ICONIC SILHOUETTES</h2>
+                <p class="iconic-subtitle">
+                    Distinctive designs that have become synonymous with our brand identity.<br>
+                    Each piece tells a story of tradition, innovation, and timeless beauty.
+                </p>
+            </div>
+
+            <div class="iconic-grid">
+                <div class="iconic-item iconic-large">
+                    <div class="iconic-image">
+                        <img loading="lazy" src="images/JMC_Rushali_9sept20_8885.jpg" alt="Iconic Silhouette 1">
+                    </div>
+                    <div class="iconic-content">
+                        <span class="iconic-label">EST. 1949</span>
+                        <h3 class="iconic-item-title">The Classic Cascade</h3>
+                        <p class="iconic-item-desc">Our most celebrated necklace design, featuring a graceful waterfall of diamonds and pearls</p>
+                        <button class="btn btn-light">DISCOVER</button>
+                    </div>
+                </div>
+
+                <div class="iconic-item">
+                    <div class="iconic-image">
+                        <img loading="lazy" src="images/JMC_7aug22_9530.jpg" alt="Iconic Silhouette 2">
+                    </div>
+                    <div class="iconic-content">
+                        <span class="iconic-label">SIGNATURE</span>
+                        <h3 class="iconic-item-title">Royal Heritage Ring</h3>
+                        <p class="iconic-item-desc">An emblem of our craftsmanship</p>
+                        <button class="btn btn-light">DISCOVER</button>
+                    </div>
+                </div>
+
+                <div class="iconic-item">
+                    <div class="iconic-image">
+                        <img loading="lazy" src="images/JMC_7aug22_8026.jpg" alt="Iconic Silhouette 3">
+                    </div>
+                    <div class="iconic-content">
+                        <span class="iconic-label">ICONIC</span>
+                        <h3 class="iconic-item-title">Eternal Chandelier Earrings</h3>
+                        <p class="iconic-item-desc">Drama and elegance combined</p>
+                        <button class="btn btn-light">DISCOVER</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="iconic-cta">
+                <button class="btn btn-light">EXPLORE ALL SIGNATURE PIECES</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explore by Category Section -->
+    <section class="explore-category">
+        <!-- By Style Section -->
+        <div class="by-style-section">
+            <div class="by-style-header">
+                <h2 class="by-style-title">BY STYLE</h2>
+                <p class="by-style-subtitle">Explore our collection crafted to complement every traditional ensemble</p>
+            </div>
+
+            <div class="style-categories">
+                <!-- Lehengas -->
+                <div class="style-category lehengas">
+                    <div class="style-image-wrapper">
+                        <img loading="lazy" src="images/JMC_Rushali_9sept20_8885.jpg" alt="Lehengas Collection">
+                        <div class="style-overlay">
+                            <div class="style-overlay-content">
+                                <h3 class="style-category-name">LEHENGAS</h3>
+                                <p class="style-category-desc">Regal jewellery for grand celebrations</p>
+                                <button class="btn btn-light">EXPLORE</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="style-info">
+                        <h4 class="style-info-title">For Lehengas</h4>
+                        <p class="style-info-text">Statement necklaces, maang tikkas, and elaborate earrings</p>
+                    </div>
+                </div>
+
+                <!-- Sarees -->
+                <div class="style-category sarees">
+                    <div class="style-image-wrapper">
+                        <img loading="lazy" src="images/JMC_Rushali_9sept20_8908.jpg" alt="Sarees Collection">
+                        <div class="style-overlay">
+                            <div class="style-overlay-content">
+                                <h3 class="style-category-name">SAREES</h3>
+                                <p class="style-category-desc">Elegant pieces for timeless grace</p>
+                                <button class="btn btn-light">EXPLORE</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="style-info">
+                        <h4 class="style-info-title">For Sarees</h4>
+                        <p class="style-info-text">Classic chokers, delicate bangles, and chandelier earrings</p>
+                    </div>
+                </div>
+
+                <!-- Gowns -->
+                <div class="style-category gowns">
+                    <div class="style-image-wrapper">
+                        <img loading="lazy" src="images/JMC_7aug22_8335.jpg" alt="Gowns Collection">
+                        <div class="style-overlay">
+                            <div class="style-overlay-content">
+                                <h3 class="style-category-name">GOWNS</h3>
+                                <p class="style-category-desc">Contemporary sophistication</p>
+                                <button class="btn btn-light">EXPLORE</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="style-info">
+                        <h4 class="style-info-title">For Gowns</h4>
+                        <p class="style-info-text">Minimalist necklaces, statement rings, and drop earrings</p>
+                    </div>
+                </div>
+
+                <!-- Kurta Sets -->
+                <div class="style-category kurta">
+                    <div class="style-image-wrapper">
+                        <img loading="lazy" src="images/JMC_28april24_89123.jpg" alt="Kurta Sets Collection">
+                        <div class="style-overlay">
+                            <div class="style-overlay-content">
+                                <h3 class="style-category-name">KURTA SETS</h3>
+                                <p class="style-category-desc">Effortless ethnic charm</p>
+                                <button class="btn btn-light">EXPLORE</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="style-info">
+                        <h4 class="style-info-title">For Kurta Sets</h4>
+                        <p class="style-info-text">Layered necklaces, jhumkas, and versatile bangles</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Curated for You Section -->
+        <div class="curated-section">
+            <div class="curated-content-wrapper">
+                <div class="curated-text-side">
+                    <span class="curated-label">PERSONALIZED</span>
+                    <h2 class="curated-title">CURATED FOR YOU</h2>
+                    <p class="curated-description">
+                        Let our expert stylists help you find the perfect jewellery to complement your outfit.
+                        Whether it's traditional or contemporary, we curate pieces that reflect your unique style
+                        and the occasion you're dressing for.
+                    </p>
+                    <div class="curated-features">
+                        <div class="curated-feature">
+                            <div class="feature-icon">✦</div>
+                            <div class="feature-text">
+                                <h4>Personal Styling</h4>
+                                <p>One-on-one consultation with our experts</p>
+                            </div>
+                        </div>
+                        <div class="curated-feature">
+                            <div class="feature-icon">✦</div>
+                            <div class="feature-text">
+                                <h4>Outfit Matching</h4>
+                                <p>Jewellery perfectly paired with your attire</p>
+                            </div>
+                        </div>
+                        <div class="curated-feature">
+                            <div class="feature-icon">✦</div>
+                            <div class="feature-text">
+                                <h4>Occasion Guidance</h4>
+                                <p>Expert advice for every celebration</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary-filled">BOOK YOUR STYLING SESSION</button>
+                </div>
+
+                <div class="curated-image-side">
+                    <div class="curated-image-grid">
+                        <div class="curated-image-item curated-large">
+                            <img loading="lazy" src="images/JMC_28april24_89230.jpg" alt="Curated Selection 1">
+                        </div>
+                        <div class="curated-image-item">
+                            <img loading="lazy" src="images/JMC_7aug22_8026.jpg" alt="Curated Selection 2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-newsletter">
+                <p class="newsletter-text">
+                    Sign up for our newsletter to get exclusive<br>
+                    updates and surprise launch event invites.
+                </p>
+                <form class="newsletter-form">
+                    <label for="newsletter-email" class="sr-only">Email Address</label>
+                    <input type="email" id="newsletter-email" placeholder="Your email" class="newsletter-input" required aria-label="Email address for newsletter">
+                    <button type="submit" class="newsletter-submit">Sign up ⟶</button>
+                </form>
+                <label class="newsletter-checkbox">
+                    <input type="checkbox" required aria-label="Agree to terms and conditions">
+                    <span>I agree with <a href="#" class="terms-link">Terms and conditions</a></span>
+                </label>
+                <div class="footer-stores">
+                    <p class="stores-text">5 Stores worldwide</p>
+                    <a href="#" class="find-store-link">Find a Store</a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3 class="footer-heading">THE COMPANY</h3>
+                    <ul class="footer-list">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Collections Process</a></li>
+                        <li><a href="#">Runways</a></li>
+                        <li><a href="#">Association</a></li>
+                        <li><a href="#">Career</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3 class="footer-heading">NEED HELP</h3>
+                    <ul class="footer-list">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Book an Appointment</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">FAQ's</a></li>
+                        <li><a href="#">Stock Locator</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3 class="footer-heading">LEGAL</h3>
+                    <ul class="footer-list">
+                        <li><a href="#">Privacy & Cookies</a></li>
+                        <li><a href="#">Fees And Payment</a></li>
+                        <li><a href="#">Term And Condition</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-social">
+            <a href="https://instagram.com" class="social-icon" aria-label="Instagram">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/>
+                    <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+                    <circle cx="18" cy="6" r="1" fill="currentColor"/>
+                </svg>
+            </a>
+            <a href="https://facebook.com" class="social-icon" aria-label="Facebook">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <a href="https://youtube.com" class="social-icon" aria-label="YouTube">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9.75 15.02l5.75-3.27-5.75-3.27v6.54z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <a href="https://pinterest.com" class="social-icon" aria-label="Pinterest">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2a10 10 0 0 0-10 10c0 4.42 2.87 8.17 6.84 9.5-.1-.93-.18-2.35.03-3.36.2-.92 1.27-5.38 1.27-5.38s-.32-.65-.32-1.61c0-1.51.88-2.64 1.97-2.64.93 0 1.38.7 1.38 1.53 0 .93-.6 2.32-.9 3.61-.26 1.08.54 1.96 1.6 1.96 1.92 0 3.4-2.02 3.4-4.94 0-2.58-1.85-4.38-4.5-4.38-3.06 0-4.86 2.3-4.86 4.67 0 .93.36 1.92.8 2.46.09.11.1.2.08.31l-.3 1.24c-.05.18-.15.22-.34.13-1.35-.63-2.2-2.6-2.2-4.18 0-3.4 2.47-6.52 7.13-6.52 3.74 0 6.64 2.66 6.64 6.22 0 3.71-2.34 6.7-5.58 6.7-1.09 0-2.12-.57-2.47-1.24l-.67 2.56c-.24.94-.9 2.11-1.34 2.83A10 10 0 1 0 12 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+
+        <div class="footer-bottom">
+            <p class="footer-copyright">© 2025 JMC - Jewellers Madanlal Chaganlal</p>
+            <p class="footer-designer">Design Partners : Intent Global</p>
+            <div class="footer-currency">
+                <span class="currency-flag">🇮🇳</span>
+                <span class="currency-code">INR</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hero Carousel Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroSection = document.querySelector('.hero-banner');
+            const prevBtn = document.querySelector('.hero-nav-prev');
+            const nextBtn = document.querySelector('.hero-nav-next');
+            const indicators = document.querySelectorAll('.indicator');
+
+            // Carousel slides data
+            const slides = [
+                {
+                    image: 'images/JMC_Rushali_9sept20_8885.jpg',
+                    subtitle: 'IN THE SPOTLIGHT',
+                    title: 'HIGH<br>JEWELLERY',
+                    cta: 'EXPLORE COLLECTION'
+                },
+                {
+                    image: 'images/JMC_Rushali_9sept20_8908.jpg',
+                    subtitle: 'NEW ARRIVALS',
+                    title: 'TIMELESS<br>ELEGANCE',
+                    cta: 'DISCOVER MORE'
+                },
+                {
+                    image: 'images/JMC_7aug22_8335.jpg',
+                    subtitle: 'EXCLUSIVE COLLECTION',
+                    title: 'BRIDAL<br>LUXE',
+                    cta: 'VIEW COLLECTION'
+                }
+            ];
+
+            let currentSlide = 0;
+
+            function updateSlide(index) {
+                // Update background image
+                heroSection.style.backgroundImage = `url('${slides[index].image}')`;
+
+                // Update content
+                const heroText = document.querySelector('.hero-text');
+                heroText.querySelector('.hero-subtitle').textContent = slides[index].subtitle;
+                heroText.querySelector('.hero-title').innerHTML = slides[index].title;
+                heroText.querySelector('.hero-cta').textContent = slides[index].cta;
+
+                // Update indicators
+                indicators.forEach((indicator, i) => {
+                    indicator.classList.toggle('active', i === index);
+                });
+
+                currentSlide = index;
+            }
+
+            function nextSlide() {
+                const nextIndex = (currentSlide + 1) % slides.length;
+                updateSlide(nextIndex);
+            }
+
+            function prevSlide() {
+                const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+                updateSlide(prevIndex);
+            }
+
+            // Event listeners
+            if (nextBtn) {
+                nextBtn.addEventListener('click', nextSlide);
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', prevSlide);
+            }
+
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => updateSlide(index));
+            });
+
+            // Auto-play carousel every 5 seconds
+            let autoplayInterval = setInterval(nextSlide, 5000);
+
+            // Pause autoplay on hover
+            heroSection.addEventListener('mouseenter', () => {
+                clearInterval(autoplayInterval);
+            });
+
+            heroSection.addEventListener('mouseleave', () => {
+                autoplayInterval = setInterval(nextSlide, 5000);
+            });
+        });
+
+        // Collection Carousel Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselButtons = document.querySelectorAll('.carousel-nav');
+
+            carouselButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const carouselId = this.getAttribute('data-carousel');
+                    const carousel = document.getElementById(carouselId);
+                    if (!carousel) return;
+
+                    const items = carousel.querySelectorAll('.carousel-item');
+                    let activeIndex = Array.from(items).findIndex(item => item.classList.contains('active'));
+
+                    // Remove active class from current item
+                    items[activeIndex].classList.remove('active');
+
+                    // Calculate new index
+                    if (this.classList.contains('carousel-next')) {
+                        activeIndex = (activeIndex + 1) % items.length;
+                    } else {
+                        activeIndex = (activeIndex - 1 + items.length) % items.length;
+                    }
+
+                    // Add active class to new item
+                    items[activeIndex].classList.add('active');
+                });
+            });
+        });
+
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const headerLeft = document.querySelector('.header-left');
+
+            if (mobileMenuToggle && headerLeft) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    mobileMenuToggle.classList.toggle('active');
+                    headerLeft.classList.toggle('active');
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!headerLeft.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+                        mobileMenuToggle.classList.remove('active');
+                        headerLeft.classList.remove('active');
+                    }
+                });
+
+                // Close menu on window resize
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768) {
+                        mobileMenuToggle.classList.remove('active');
+                        headerLeft.classList.remove('active');
+                    }
+                });
+            }
+        });
+
+        // Newsletter Form Validation and Submission
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsletterForm = document.querySelector('.newsletter-form');
+            const emailInput = document.querySelector('.newsletter-input');
+            const checkbox = document.querySelector('.newsletter-checkbox input[type="checkbox"]');
+
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    // Validate email
+                    const email = emailInput.value.trim();
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                    if (!email) {
+                        alert('Please enter your email address.');
+                        emailInput.focus();
+                        return;
+                    }
+
+                    if (!emailRegex.test(email)) {
+                        alert('Please enter a valid email address.');
+                        emailInput.focus();
+                        return;
+                    }
+
+                    if (!checkbox.checked) {
+                        alert('Please agree to the Terms and Conditions.');
+                        return;
+                    }
+
+                    // Simulate form submission
+                    console.log('Newsletter subscription:', email);
+                    alert('Thank you for subscribing to our newsletter!');
+
+                    // Reset form
+                    newsletterForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

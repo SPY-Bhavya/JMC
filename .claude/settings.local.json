@@ -12,7 +12,8 @@
       "Bash(python update_logo.py:*)",
       "Bash(python verify_jmc_conversion.py:*)",
       "Bash(python:*)",
-      "Bash(test:*)"
+      "Bash(test:*)",
+      "Bash(dir:*)"
     ]
   }
 }
