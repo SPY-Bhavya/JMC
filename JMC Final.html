@@ -618,29 +618,140 @@
             margin: 0 auto;
         }
 
-        .amara-images {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0;
-            max-width: 1400px;
+        /* Amara Carousel Container */
+        .amara-carousel-wrapper {
+            max-width: 1600px;
             margin: 0 auto 50px;
+            position: relative;
         }
 
-        .amara-image-item {
+        .amara-carousel-container {
             position: relative;
             overflow: hidden;
-            aspect-ratio: 3/4;
+            border-radius: 0;
+            height: 600px;
         }
 
-        .amara-image-item img {
+        .amara-carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .amara-carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.2s ease;
+            pointer-events: none;
+        }
+
+        .amara-carousel-item.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .amara-carousel-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
         }
 
-        .amara-image-item:hover img {
-            transform: scale(1.05);
+        /* Carousel Text Overlay */
+        .amara-carousel-overlay {
+            position: absolute;
+            left: 80px;
+            bottom: 80px;
+            z-index: 10;
+            color: white;
+            max-width: 500px;
+        }
+
+        .amara-carousel-title {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: 6px;
+            margin-bottom: 20px;
+            font-family: Georgia, serif;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .amara-carousel-title .highlight {
+            color: #d4af37;
+        }
+
+        .amara-carousel-description {
+            font-size: 16px;
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .amara-carousel-link {
+            color: white;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: lowercase;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: gap 0.3s ease;
+        }
+
+        .amara-carousel-link:hover {
+            gap: 15px;
+        }
+
+        .amara-carousel-link svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Navigation Arrows */
+        .amara-carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .amara-carousel-nav:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .amara-carousel-prev {
+            left: 30px;
+        }
+
+        .amara-carousel-next {
+            right: 30px;
+        }
+
+        .amara-carousel-nav svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
         }
 
         .amara-cta {
@@ -663,13 +774,22 @@
             .amara-subtitle {
                 font-size: 14px;
             }
+
+            .amara-carousel-container {
+                height: 500px;
+            }
+
+            .amara-carousel-overlay {
+                left: 50px;
+                bottom: 50px;
+            }
+
+            .amara-carousel-title {
+                font-size: 36px;
+            }
         }
 
         @media (max-width: 768px) {
-            .amara-images {
-                grid-template-columns: 1fr;
-            }
-
             .amara-section {
                 padding: 50px 20px 40px;
             }
@@ -688,6 +808,41 @@
                 display: none;
             }
 
+            .amara-carousel-container {
+                height: 400px;
+            }
+
+            .amara-carousel-overlay {
+                left: 30px;
+                bottom: 30px;
+                right: 30px;
+                max-width: none;
+            }
+
+            .amara-carousel-title {
+                font-size: 28px;
+                letter-spacing: 3px;
+                margin-bottom: 15px;
+            }
+
+            .amara-carousel-description {
+                font-size: 14px;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+
+            .amara-carousel-nav {
+                width: 40px;
+                height: 40px;
+            }
+
+            .amara-carousel-prev {
+                left: 15px;
+            }
+
+            .amara-carousel-next {
+                right: 15px;
+            }
         }
 
         /* Statement Earrings Section */
@@ -2736,16 +2891,73 @@
                 whose exquisite ribbon motif is brilliantly crafted of diamonds.
             </p>
         </div>
-        
-        <div class="amara-images">
-            <div class="amara-image-item">
-                <img loading="lazy" src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918348/JMC_28april24_89123_zti3vp.jpg" alt="Amara Necklace 1">
-            </div>
-            <div class="amara-image-item">
-                <img loading="lazy" src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918332/JMC_28april24_89469_ubnhus.jpg" alt="Amara Necklace 2">
+
+        <div class="amara-carousel-wrapper">
+            <div class="amara-carousel-container">
+                <div class="amara-carousel">
+                    <div class="amara-carousel-item active">
+                        <img loading="lazy" src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918348/JMC_28april24_89123_zti3vp.jpg" alt="Amara Necklace">
+                        <div class="amara-carousel-overlay">
+                            <h3 class="amara-carousel-title">MM <span class="highlight">VOWS</span></h3>
+                            <p class="amara-carousel-description">
+                                Understated yet unmistakable, our brown tissue trench layered over a tailored waistcoat
+                            </p>
+                            <a href="#" class="amara-carousel-link">
+                                explore
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" fill="none" stroke-width="2"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="amara-carousel-item">
+                        <img loading="lazy" src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918332/JMC_28april24_89469_ubnhus.jpg" alt="Amara Collection">
+                        <div class="amara-carousel-overlay">
+                            <h3 class="amara-carousel-title">MM <span class="highlight">COLLECTION</span></h3>
+                            <p class="amara-carousel-description">
+                                Exquisite craftsmanship meets contemporary design in our signature collection
+                            </p>
+                            <a href="#" class="amara-carousel-link">
+                                explore
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" fill="none" stroke-width="2"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="amara-carousel-item">
+                        <img loading="lazy" src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918334/JMC_Rushali_9sept20_8885_ocjzr7.jpg" alt="Luxury Jewellery">
+                        <div class="amara-carousel-overlay">
+                            <h3 class="amara-carousel-title">TIMELESS <span class="highlight">ELEGANCE</span></h3>
+                            <p class="amara-carousel-description">
+                                Discover pieces that transcend trends and celebrate eternal beauty
+                            </p>
+                            <a href="#" class="amara-carousel-link">
+                                explore
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" fill="none" stroke-width="2"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="amara-carousel-nav amara-carousel-prev" aria-label="Previous slide">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
+
+                <button class="amara-carousel-nav amara-carousel-next" aria-label="Next slide">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
             </div>
         </div>
-        
+
         <div class="amara-cta">
             <button class="btn btn-light">ENQUIRE</button>
         </div>
@@ -3529,6 +3741,69 @@
                     newsletterForm.reset();
                 });
             }
+        });
+
+        // Amara Carousel Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const amaraCarousel = document.querySelector('.amara-carousel');
+            if (!amaraCarousel) return;
+
+            const items = amaraCarousel.querySelectorAll('.amara-carousel-item');
+            const prevBtn = document.querySelector('.amara-carousel-prev');
+            const nextBtn = document.querySelector('.amara-carousel-next');
+            let currentIndex = 0;
+            let autoplayInterval;
+
+            function showSlide(index) {
+                items.forEach((item, i) => {
+                    item.classList.remove('active');
+                    if (i === index) {
+                        item.classList.add('active');
+                    }
+                });
+                currentIndex = index;
+            }
+
+            function nextSlide() {
+                let next = (currentIndex + 1) % items.length;
+                showSlide(next);
+            }
+
+            function prevSlide() {
+                let prev = (currentIndex - 1 + items.length) % items.length;
+                showSlide(prev);
+            }
+
+            function startAutoplay() {
+                autoplayInterval = setInterval(nextSlide, 5000);
+            }
+
+            function stopAutoplay() {
+                clearInterval(autoplayInterval);
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    prevSlide();
+                    stopAutoplay();
+                    startAutoplay();
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    nextSlide();
+                    stopAutoplay();
+                    startAutoplay();
+                });
+            }
+
+            // Start autoplay
+            startAutoplay();
+
+            // Pause on hover
+            amaraCarousel.addEventListener('mouseenter', stopAutoplay);
+            amaraCarousel.addEventListener('mouseleave', startAutoplay);
         });
     </script>
 </body>
