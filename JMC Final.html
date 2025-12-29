@@ -756,121 +756,143 @@
         }
 
         /* Signature Haathphool Section */
+        /* Haathphool Section - Redesigned */
         .haathphool-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            height: 700px;
-        }
-
-        .haathphool-left {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .haathphool-left-top {
-            background: linear-gradient(180deg, #f5f5f5 0%, #e8e8e8 100%);
-            padding: 60px 40px 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .haathphool-left-jewel-image {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 100px 0;
+            position: relative;
             overflow: hidden;
-            border: 4px solid rgba(26, 58, 58, 0.2);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
         }
 
-        .haathphool-left-jewel-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .haathphool-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
         }
 
-        .haathphool-left-image {
-            flex: 1;
-            background-image: url('https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918332/JMC_Rushali_9sept20_8908_lchbiq.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .haathphool-left-content {
-            background-color: #1a3a3a;
-            padding: 50px 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .haathphool-header {
+            text-align: center;
+            margin-bottom: 80px;
         }
 
         .haathphool-title {
-            color: white;
-            font-size: 38px;
+            color: #1a3a3a;
+            font-size: 48px;
             font-weight: 300;
-            letter-spacing: 4px;
+            letter-spacing: 6px;
             line-height: 1.3;
-            font-family: Georgia, serif;
-            text-align: center;
-            margin: 0;
+            text-transform: uppercase;
+            margin: 0 0 20px 0;
         }
 
-        .haathphool-right {
-            background-image: url('https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918328/JMC_7aug22_8666_aayfqf.jpg');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            display: flex;
-            flex-direction: column;
+        .haathphool-subtitle {
+            color: #666;
+            font-size: 16px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .haathphool-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
             align-items: center;
-            justify-content: center;
-            padding: 60px 40px;
         }
 
-        .haathphool-right::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
-        }
-
-        .haathphool-jewel-image {
+        .haathphool-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
             position: relative;
-            z-index: 2;
-            width: 300px;
-            height: 300px;
-            margin-bottom: 30px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 3px solid rgba(255, 255, 255, 0.3);
         }
 
-        .haathphool-jewel-image img {
+        .haathphool-image-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
+        }
+
+        .haathphool-image-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+        }
+
+        .haathphool-image-item.large {
+            grid-row: span 2;
+        }
+
+        .haathphool-image-item.circle {
+            border-radius: 50%;
+            aspect-ratio: 1/1;
+        }
+
+        .haathphool-image-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.6s ease;
         }
 
-        .haathphool-right-content {
-            position: relative;
-            z-index: 2;
-            color: white;
-            text-align: center;
+        .haathphool-image-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .haathphool-text-content {
             padding: 40px;
-            max-width: 600px;
         }
 
         .haathphool-description {
-            font-size: 16px;
-            line-height: 1.9;
-            margin-bottom: 40px;
+            font-size: 18px;
+            line-height: 2;
+            margin-bottom: 50px;
             font-weight: 300;
-            color: #f5f5f5;
+            color: #444;
+        }
+
+        .haathphool-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .haathphool-feature {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .haathphool-feature-icon {
+            color: var(--color-primary);
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .haathphool-feature-title {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #1a3a3a;
+            margin: 0;
+        }
+
+        .haathphool-feature-text {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Legacy classes kept for compatibility */
+        .haathphool-left, .haathphool-right, .haathphool-left-top,
+        .haathphool-left-jewel-image, .haathphool-left-image,
+        .haathphool-left-content, .haathphool-jewel-image,
+        .haathphool-right-content {
+            display: none;
         }
 
         /* .haathphool-btn - removed, use .btn .btn-light */
@@ -878,96 +900,86 @@
         /* Responsive Haathphool Section */
         @media (max-width: 1024px) {
             .haathphool-section {
-                grid-template-columns: 1fr;
-                height: auto;
+                padding: 80px 0;
             }
 
-            .haathphool-left {
-                min-height: 600px;
+            .haathphool-container {
+                padding: 0 30px;
             }
 
-            .haathphool-right {
-                min-height: 500px;
-                padding: 50px 30px;
-            }
-
-            .haathphool-left-top {
-                padding: 50px 30px 30px;
-            }
-
-            .haathphool-left-jewel-image {
-                width: 200px;
-                height: 200px;
-            }
-
-            .haathphool-left-content {
-                padding: 40px 40px;
-                gap: 25px;
+            .haathphool-header {
+                margin-bottom: 60px;
             }
 
             .haathphool-title {
-                font-size: 32px;
+                font-size: 38px;
+                letter-spacing: 4px;
             }
 
-            .haathphool-jewel-image {
-                width: 250px;
-                height: 250px;
-                margin-bottom: 25px;
+            .haathphool-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
             }
 
-            .haathphool-description {
-                font-size: 15px;
+            .haathphool-images {
+                gap: 20px;
+            }
+
+            .haathphool-text-content {
+                padding: 20px;
             }
         }
 
         @media (max-width: 768px) {
-            .haathphool-left {
-                min-height: 500px;
+            .haathphool-section {
+                padding: 60px 0;
             }
 
-            .haathphool-right {
-                min-height: 450px;
-                padding: 40px 20px;
+            .haathphool-container {
+                padding: 0 20px;
             }
 
-            .haathphool-left-top {
-                padding: 40px 20px 25px;
-            }
-
-            .haathphool-left-jewel-image {
-                width: 170px;
-                height: 170px;
-            }
-
-            .haathphool-left-content {
-                padding: 40px 30px;
-                gap: 20px;
+            .haathphool-header {
+                margin-bottom: 40px;
             }
 
             .haathphool-title {
-                font-size: 26px;
+                font-size: 28px;
                 letter-spacing: 3px;
             }
 
-            .haathphool-jewel-image {
-                width: 200px;
-                height: 200px;
-                margin-bottom: 20px;
+            .haathphool-subtitle {
+                font-size: 13px;
             }
 
-            .haathphool-right-content {
+            .haathphool-content {
+                gap: 40px;
+            }
+
+            .haathphool-images {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .haathphool-image-item.large {
+                grid-row: span 1;
+            }
+
+            .haathphool-text-content {
                 padding: 0;
             }
 
             .haathphool-description {
-                font-size: 14px;
-                padding: 0 10px;
+                font-size: 15px;
+                line-height: 1.8;
+                margin-bottom: 30px;
             }
 
-            .haathphool-description br {
-                display: none;
+            .haathphool-features {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-bottom: 30px;
             }
-
         }
 
         /* Featured Collections Section */
@@ -2451,6 +2463,15 @@
                 font-size: 20px;
             }
 
+            .haathphool-description {
+                font-size: 14px;
+                line-height: 1.7;
+            }
+
+            .haathphool-subtitle {
+                font-size: 11px;
+            }
+
             .collection-title {
                 font-size: 22px;
             }
@@ -2730,29 +2751,55 @@
 
     <!-- Signature Haathphool Section -->
     <section class="haathphool-section">
-        <div class="haathphool-left">
-            <div class="haathphool-left-top">
-                <div class="haathphool-left-jewel-image">
-                    <img loading="lazy" src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918331/JMC_7aug22_8403_qfzpaf.jpg" alt="Haathphool Jewelry Detail">
+        <div class="haathphool-container">
+            <div class="haathphool-header">
+                <h2 class="haathphool-title">Our Signature Haathphool</h2>
+                <p class="haathphool-subtitle">A Modern Take on Timeless Tradition</p>
+            </div>
+
+            <div class="haathphool-content">
+                <div class="haathphool-images">
+                    <div class="haathphool-image-item large">
+                        <img loading="lazy" src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918332/JMC_7aug22_9530_o0trub.jpg" alt="Haathphool Jewelry Main">
+                    </div>
+                    <div class="haathphool-image-item circle">
+                        <img loading="lazy" src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918331/JMC_7aug22_8403_qfzpaf.jpg" alt="Haathphool Detail">
+                    </div>
+                    <div class="haathphool-image-item">
+                        <img loading="lazy" src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918332/JMC_Rushali_9sept20_8908_lchbiq.jpg" alt="Haathphool Wearing">
+                    </div>
                 </div>
-            </div>
-            <div class="haathphool-left-image"></div>
-            <div class="haathphool-left-content">
-                <h2 class="haathphool-title">OUR SIGNATURE HAATHPHOOL</h2>
-            </div>
-        </div>
-        <div class="haathphool-right">
-            <div class="haathphool-jewel-image">
-                <img loading="lazy" src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918332/JMC_7aug22_9530_o0trub.jpg" alt="Haathphool Jewelry">
-            </div>
-            <div class="haathphool-right-content">
-                <p class="haathphool-description">
-                    A symbol of beauty and grace. Taking something deeply traditional<br>
-                    and making it feel modern, and truly ours. With brilliant and rose<br>
-                    cut diamonds, beautiful floral motifs and intricate craftsmanship, our<br>
-                    signature haathphool is meant to be cherished.
-                </p>
-                <button class="btn btn-light">ENQUIRE</button>
+
+                <div class="haathphool-text-content">
+                    <p class="haathphool-description">
+                        A symbol of beauty and grace. Taking something deeply traditional and making it feel modern, and truly ours. With brilliant and rose-cut diamonds, beautiful floral motifs and intricate craftsmanship, our signature haathphool is meant to be cherished.
+                    </p>
+
+                    <div class="haathphool-features">
+                        <div class="haathphool-feature">
+                            <div class="haathphool-feature-icon">✦</div>
+                            <h4 class="haathphool-feature-title">Brilliant Diamonds</h4>
+                            <p class="haathphool-feature-text">Rose-cut and brilliant diamonds creating stunning brilliance</p>
+                        </div>
+                        <div class="haathphool-feature">
+                            <div class="haathphool-feature-icon">✦</div>
+                            <h4 class="haathphool-feature-title">Floral Motifs</h4>
+                            <p class="haathphool-feature-text">Traditional patterns with contemporary aesthetics</p>
+                        </div>
+                        <div class="haathphool-feature">
+                            <div class="haathphool-feature-icon">✦</div>
+                            <h4 class="haathphool-feature-title">Master Craftsmanship</h4>
+                            <p class="haathphool-feature-text">Intricate detailing by our expert artisans</p>
+                        </div>
+                        <div class="haathphool-feature">
+                            <div class="haathphool-feature-icon">✦</div>
+                            <h4 class="haathphool-feature-title">Heirloom Quality</h4>
+                            <p class="haathphool-feature-text">Designed to be treasured for generations</p>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary-filled">ENQUIRE</button>
+                </div>
             </div>
         </div>
     </section>
