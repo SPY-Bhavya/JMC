@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JMC Jewellery</title>
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918854/logo_small_gjrydu.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
         :root {
             /* Colors */
@@ -46,11 +53,66 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--color-bg);
+        html {
+            scroll-behavior: smooth;
         }
 
+        body {
+            font-family: "Roboto", sans-serif;
+            background-color: var(--color-bg);
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        /* Performance optimizations */
+        * {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            transform: translateZ(0);
+        }
+
+        /* Smooth scrolling optimization */
+        section {
+            transform: translateZ(0);
+        }
+
+        /* Reduce motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+            h1 {
+                font-weight: 400 !important;
+            }
+            h2,h3 {
+                 font-weight: 500 !important;
+            }
+            h2 {
+            font-size : 40px !important;
+            letter-spacing: 1px !important;
+          
+            letter-spacing: 1px !important;
+            }
+            h1,h2,h3,h4,h5 {
+                font-family: "Roboto", sans-serif !important;
+            }
+            h3 {
+                font-size : 38px !important;
+            }
+           
+    
+  
         /* Screen reader only content */
         .sr-only {
             position: absolute;
@@ -65,6 +127,7 @@
         }
 
         /* Unified Button System */
+        /* Optimize transitions for better performance */
         .btn {
             background-color: transparent;
             border: 2px solid;
@@ -72,9 +135,10 @@
             font-size: var(--font-sm);
             letter-spacing: 2px;
             cursor: pointer;
-            transition: all var(--transition-slow);
+            transition: all var(--transition-normal);
             font-weight: 500;
             text-transform: uppercase;
+            will-change: transform;
         }
 
         .btn:focus {
@@ -147,16 +211,20 @@
             font-size: 15px;
             color: #666;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 4px;
         }
 
         .collection-btn.active {
             background-color: #e0e0e0;
             color: #333;
+            transform: translateY(-1px);
         }
 
         .collection-btn:hover {
             background-color: #e8e8e8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         /* Center Section - Logo */
@@ -182,6 +250,11 @@
             height: 75px;
             width: auto;
             object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-image:hover {
+            transform: scale(1.05);
         }
 
         .diamond-icon {
@@ -215,15 +288,17 @@
             background: none;
             border: none;
             cursor: pointer;
-            padding: 5px;
+            padding: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 50%;
         }
 
         .icon-btn:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) translateY(-2px);
+            background-color: rgba(44, 95, 95, 0.1);
         }
 
         .icon-btn svg {
@@ -253,23 +328,25 @@
             color: #333;
             font-size: 15px;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            padding: 8px 0;
         }
 
         .nav-link:hover {
             color: #2c5f5f;
+            transform: translateY(-1px);
         }
 
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
             background-color: #2c5f5f;
-            transition: width 0.3s ease;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nav-link:hover::after {
@@ -366,6 +443,9 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            transition: none;
+            transform: translateZ(0);
+            will-change: background-image;
         }
 
         .hero-banner::before {
@@ -375,7 +455,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to right, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+            background: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0.2));
         }
 
         .hero-content {
@@ -383,25 +463,119 @@
             z-index: 2;
             text-align: center;
             color: white;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroFadeIn 1.2s ease-out 0.3s forwards;
+            transition: all 0.3s ease;
+            will-change: transform, opacity;
+        }
+
+        .hero-content.fade-out {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .hero-content.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes heroFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-subtitle {
-            font-size: 13px;
-            letter-spacing: 4px;
+            font-family: 'Playfair Display', serif;
+            font-size: 11px;
             font-weight: 400;
-            margin-bottom: 20px;
-            opacity: 0.95;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            opacity: 0;
             text-transform: uppercase;
+            animation: slideDown 0.8s ease-out 0.6s forwards;
+            font-style: italic;
+            transition: all 0.3s ease;
+            will-change: transform, opacity;
+        }
+
+        .hero-subtitle.fade-out {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        .hero-subtitle.fade-in {
+            opacity: 0.9;
+            transform: translateY(0);
+        }
+
+        @keyframes slideDown {
+            to {
+                opacity: 0.9;
+            }
         }
 
         .hero-title {
-            font-size: 72px;
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
             font-weight: 300;
-            letter-spacing: 12px;
+            letter-spacing: 6px;
             text-transform: uppercase;
-            line-height: 1.2;
-            margin-bottom: 40px;
-            text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+            line-height: 1.1;
+            margin-bottom: 30px;
+            text-shadow: 2px 4px 15px rgba(0,0,0,0.4);
+            opacity: 0;
+            transform: scale(0.9);
+            animation: titleAppear 1s ease-out 0.9s forwards;
+            transition: all 0.3s ease;
+            will-change: transform, opacity;
+        }
+
+        .hero-title.fade-out {
+            opacity: 0;
+            transform: scale(0.95) translateY(15px);
+        }
+
+        .hero-title.fade-in {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        @keyframes titleAppear {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero-content .btn {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: buttonSlideUp 0.8s ease-out 1.4s forwards;
+            font-size: 11px;
+            letter-spacing: 2px;
+            padding: 14px 35px;
+            transition: all 0.25s ease;
+            will-change: transform, opacity;
+        }
+
+        .hero-content .btn.fade-out {
+            opacity: 0;
+            transform: translateY(25px) scale(0.95);
+        }
+
+        .hero-content .btn.fade-in {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        @keyframes buttonSlideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
 
@@ -411,7 +585,7 @@
             top: 50%;
             transform: translateY(-50%);
             background: rgba(255,255,255,0.2);
-            border: 2px solid white;
+            border: 2px solid rgba(255,255,255,0.5);
             color: white;
             width: 50px;
             height: 50px;
@@ -421,13 +595,15 @@
             justify-content: center;
             cursor: pointer;
             z-index: 3;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
         }
 
         .hero-nav:hover {
-            background: rgba(255,255,255,0.4);
-            transform: translateY(-50%) scale(1.1);
+            background: rgba(255,255,255,0.3);
+            border-color: white;
+            transform: translateY(-50%) scale(1.15) rotate(5deg);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
 
         .hero-nav-prev {
@@ -460,17 +636,19 @@
             border-radius: 50%;
             background: rgba(255,255,255,0.4);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .indicator.active {
             background: white;
             width: 30px;
             border-radius: 5px;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.3);
         }
 
         .indicator:hover {
-            background: rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.8);
+            transform: scale(1.3);
         }
 
         /* Responsive Hero */
@@ -480,13 +658,13 @@
             }
 
             .hero-title {
-                font-size: 48px;
-                letter-spacing: 8px;
+                font-size: 36px;
+                letter-spacing: 4px;
             }
 
             .hero-subtitle {
-                font-size: 11px;
-                letter-spacing: 3px;
+                font-size: 10px;
+                letter-spacing: 2px;
             }
 
             .hero-nav {
@@ -500,6 +678,11 @@
 
             .hero-nav-next {
                 right: 15px;
+            }
+
+            .hero-content .btn {
+                font-size: 10px;
+                padding: 12px 28px;
             }
         }
 
@@ -714,6 +897,12 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.6s ease 0.3s;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.02) 100%);
+            padding: 30px;
+            border-radius: 8px;
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.1);
         }
 
         .amara-carousel-item.center .amara-carousel-overlay {
@@ -722,18 +911,20 @@
         }
 
         .amara-carousel-title {
-            font-size: 48px;
+            font-size: 38px;
             font-weight: 300;
-            letter-spacing: 6px;
+            letter-spacing: 3px;
             margin-bottom: 20px;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             text-transform: uppercase;
             line-height: 1.2;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.9), 0 0 30px rgba(255,255,255,0.2);
         }
 
         .amara-carousel-title .highlight {
             color: #d4af37;
             text-transform: uppercase;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.9), 0 0 30px rgba(212,175,55,0.4);
         }
 
         .amara-carousel-description {
@@ -743,6 +934,7 @@
             margin-bottom: 30px;
             opacity: 0.95;
             text-transform: uppercase;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.8), 0 0 15px rgba(255,255,255,0.15);
         }
 
         .amara-carousel-link {
@@ -1987,19 +2179,37 @@
 
         .iconic-item {
             background: rgba(255,255,255,0.05);
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
             border: 1px solid rgba(255,255,255,0.1);
-            transition: transform 0.4s ease, background 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             height: 100%;
+            position: relative;
+        }
+
+        .iconic-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .iconic-item:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px) scale(1.02);
             background: rgba(255,255,255,0.08);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .iconic-item:hover::before {
+            opacity: 1;
         }
 
         .iconic-item.iconic-large {
@@ -2011,6 +2221,23 @@
             min-height: 350px;
             overflow: hidden;
             flex-shrink: 0;
+            position: relative;
+        }
+
+        .iconic-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .iconic-item:hover .iconic-image::after {
+            opacity: 1;
         }
 
         .iconic-image img {
@@ -2036,10 +2263,20 @@
             font-size: 10px;
             letter-spacing: 2px;
             color: #d4af37;
-            border: 1px solid #d4af37;
-            padding: 4px 12px;
+          
+            padding: 6px 16px;
             margin-bottom: 15px;
             font-weight: 500;
+            border-radius: 20px;
+            
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .iconic-item:hover .iconic-label {
+            background: #d4af37;
+            color: #1a3a3a;
+            transform: scale(1.05);
         }
 
         .iconic-item-title {
@@ -2064,6 +2301,14 @@
 
         .iconic-content .btn {
             margin-top: auto;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .iconic-item:hover .iconic-content .btn {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* .iconic-btn - removed, use .btn .btn-light */
@@ -2760,6 +3005,8 @@
                 gap: 15px;
             }
         }
+
+
     </style>
 </head>
 <body>
@@ -2874,7 +3121,7 @@
             </div>
         </div>
         <div class="statement-image">
-            <img loading="lazy" src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918328/JMC_7aug22_8335_oapdwx.jpg" alt="Statement Necklace">
+            <img src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918328/JMC_7aug22_8335_oapdwx.jpg" alt="Statement Necklace">
         </div>
     </section>
 
@@ -2893,7 +3140,7 @@
             <div class="amara-carousel-container">
                 <div class="amara-carousel">
                     <div class="amara-carousel-item active">
-                        <img loading="lazy" src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918348/JMC_28april24_89123_zti3vp.jpg" alt="Amara Necklace">
+                        <img src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918348/JMC_28april24_89123_zti3vp.jpg" alt="Amara Necklace">
                         <div class="amara-carousel-overlay">
                             <h3 class="amara-carousel-title">MM <span class="highlight">VOWS</span></h3>
                             <p class="amara-carousel-description">
@@ -2909,7 +3156,7 @@
                     </div>
 
                     <div class="amara-carousel-item">
-                        <img loading="lazy" src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918332/JMC_28april24_89469_ubnhus.jpg" alt="Amara Collection">
+                        <img src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918332/JMC_28april24_89469_ubnhus.jpg" alt="Amara Collection">
                         <div class="amara-carousel-overlay">
                             <h3 class="amara-carousel-title">MM <span class="highlight">COLLECTION</span></h3>
                             <p class="amara-carousel-description">
@@ -2925,7 +3172,7 @@
                     </div>
 
                     <div class="amara-carousel-item">
-                        <img loading="lazy" src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918334/JMC_Rushali_9sept20_8885_ocjzr7.jpg" alt="Luxury Jewellery">
+                        <img src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918334/JMC_Rushali_9sept20_8885_ocjzr7.jpg" alt="Luxury Jewellery">
                         <div class="amara-carousel-overlay">
                             <h3 class="amara-carousel-title">TIMELESS <span class="highlight">ELEGANCE</span></h3>
                             <p class="amara-carousel-description">
@@ -2980,13 +3227,13 @@
             <div class="haathphool-content">
                 <div class="haathphool-images">
                     <div class="haathphool-image-item large">
-                        <img loading="lazy" src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918332/JMC_7aug22_9530_o0trub.jpg" alt="Haathphool Jewelry Main">
+                        <img src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918332/JMC_7aug22_9530_o0trub.jpg" alt="Haathphool Jewelry Main">
                     </div>
                     <div class="haathphool-image-item circle">
-                        <img loading="lazy" src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918331/JMC_7aug22_8403_qfzpaf.jpg" alt="Haathphool Detail">
+                        <img src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918331/JMC_7aug22_8403_qfzpaf.jpg" alt="Haathphool Detail">
                     </div>
                     <div class="haathphool-image-item">
-                        <img loading="lazy" src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918332/JMC_Rushali_9sept20_8908_lchbiq.jpg" alt="Haathphool Wearing">
+                        <img src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918332/JMC_Rushali_9sept20_8908_lchbiq.jpg" alt="Haathphool Wearing">
                     </div>
                 </div>
 
@@ -3096,6 +3343,12 @@
                         <span class="image-label">Gemstone Glory</span>
                     </div>
                 </div>
+                <div class="collection-image-item large">
+                    <img loading="lazy" src="images/JMC_7aug22_8666.jpg" alt="Season Highlight 3">
+                    <div class="image-overlay">
+                        <span class="image-label">Gemstone Glory</span>
+                    </div>
+                </div>
             </div>
             <div class="collection-text">
                 <h3 class="collection-title">SEASON'S HIGHLIGHT</h3>
@@ -3118,7 +3371,7 @@
             </div>
             <div class="luxe-grid">
                 <div class="luxe-image-item">
-                    <img loading="lazy" src="https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918334/JMC_Rushali_9sept20_8885_ocjzr7.jpg" alt="Luxe Edit 1">
+                    <img loading="lazy" src="images/JMC_7aug22_8205.JPG" alt="Luxe Edit 1">
                     <div class="image-overlay">
                         <span class="image-label">Signature Collection</span>
                     </div>
@@ -3474,14 +3727,13 @@
     </footer>
 
     <script>
-        // Hero Carousel Functionality
+        // Hero Carousel Functionality - Exact Amara Style
         document.addEventListener('DOMContentLoaded', function() {
             const heroSection = document.querySelector('.hero-banner');
             const prevBtn = document.querySelector('.hero-nav-prev');
             const nextBtn = document.querySelector('.hero-nav-next');
             const indicators = document.querySelectorAll('.indicator');
 
-            // Carousel slides data
             const slides = [
                 {
                     image: 'https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918334/JMC_Rushali_9sept20_8885_ocjzr7.jpg',
@@ -3504,64 +3756,97 @@
             ];
 
             let currentSlide = 0;
+            let imagesLoaded = 0;
+            let isAnimating = false;
+            const totalImages = slides.length;
+            
+            // Preload images like Amara
+            slides.forEach(slide => {
+                const img = new Image();
+                img.onload = () => {
+                    imagesLoaded++;
+                    if (imagesLoaded === totalImages) {
+                        enableSlider();
+                    }
+                };
+                img.src = slide.image;
+            });
 
             function updateSlide(index) {
-                // Update background image
-                heroSection.style.backgroundImage = `url('${slides[index].image}')`;
+                if (isAnimating) return;
+                isAnimating = true;
+                
+                // Use requestAnimationFrame for smooth updates like Amara
+                requestAnimationFrame(() => {
+                    const heroText = document.querySelector('.hero-text');
+                    const subtitle = heroText.querySelector('.hero-subtitle');
+                    const title = heroText.querySelector('.hero-title');
+                    const button = heroText.querySelector('.btn');
+                    
+                    heroSection.style.backgroundImage = `url('${slides[index].image}')`;
+                    subtitle.textContent = slides[index].subtitle;
+                    title.innerHTML = slides[index].title;
+                    button.textContent = slides[index].cta;
+                    
+                    indicators.forEach((indicator, i) => {
+                        indicator.classList.toggle('active', i === index);
+                    });
 
-                // Update content
-                const heroText = document.querySelector('.hero-text');
-                heroText.querySelector('.hero-subtitle').textContent = slides[index].subtitle;
-                heroText.querySelector('.hero-title').innerHTML = slides[index].title;
-                heroText.querySelector('.hero-cta').textContent = slides[index].cta;
-
-                // Update indicators
-                indicators.forEach((indicator, i) => {
-                    indicator.classList.toggle('active', i === index);
+                    currentSlide = index;
+                    
+                    // Same timing as Amara
+                    setTimeout(() => {
+                        isAnimating = false;
+                    }, 300);
                 });
-
-                currentSlide = index;
             }
 
             function nextSlide() {
-                const nextIndex = (currentSlide + 1) % slides.length;
-                updateSlide(nextIndex);
+                if (!isAnimating) {
+                    updateSlide((currentSlide + 1) % slides.length);
+                }
             }
 
             function prevSlide() {
-                const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
-                updateSlide(prevIndex);
+                if (!isAnimating) {
+                    updateSlide((currentSlide - 1 + slides.length) % slides.length);
+                }
             }
 
-            // Event listeners
-            if (nextBtn) {
-                nextBtn.addEventListener('click', nextSlide);
+            function enableSlider() {
+                nextBtn?.addEventListener('click', nextSlide);
+                prevBtn?.addEventListener('click', prevSlide);
+                indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => {
+                        if (!isAnimating) updateSlide(index);
+                    });
+                });
+
+                // Same autoplay timing as Amara
+                let autoplayInterval = setInterval(nextSlide, 4000);
+                heroSection.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+                heroSection.addEventListener('mouseleave', () => {
+                    autoplayInterval = setInterval(nextSlide, 4000);
+                });
             }
-
-            if (prevBtn) {
-                prevBtn.addEventListener('click', prevSlide);
-            }
-
-            indicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', () => updateSlide(index));
-            });
-
-            // Auto-play carousel every 5 seconds
-            let autoplayInterval = setInterval(nextSlide, 5000);
-
-            // Pause autoplay on hover
-            heroSection.addEventListener('mouseenter', () => {
-                clearInterval(autoplayInterval);
-            });
-
-            heroSection.addEventListener('mouseleave', () => {
-                autoplayInterval = setInterval(nextSlide, 5000);
-            });
         });
 
-        // Collection Carousel Functionality
+        // Collection Carousel Functionality - Optimized
         document.addEventListener('DOMContentLoaded', function() {
             const carouselButtons = document.querySelectorAll('.carousel-nav');
+            const carousels = new Map();
+
+            // Preload collection images
+            const collectionImages = [
+                'https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918348/JMC_28april24_89123_zti3vp.jpg',
+                'https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918330/JMC_28april24_89230_wcmrmg.jpg',
+                'https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918332/JMC_28april24_89469_ubnhus.jpg'
+            ];
+            
+            collectionImages.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
 
             carouselButtons.forEach(button => {
                 button.addEventListener('click', function() {
@@ -3569,10 +3854,22 @@
                     const carousel = document.getElementById(carouselId);
                     if (!carousel) return;
 
-                    const items = carousel.querySelectorAll('.carousel-item');
+                    // Cache carousel data
+                    if (!carousels.has(carouselId)) {
+                        carousels.set(carouselId, {
+                            items: carousel.querySelectorAll('.carousel-item'),
+                            isAnimating: false
+                        });
+                    }
+
+                    const carouselData = carousels.get(carouselId);
+                    if (carouselData.isAnimating) return;
+
+                    carouselData.isAnimating = true;
+                    const items = carouselData.items;
                     let activeIndex = Array.from(items).findIndex(item => item.classList.contains('active'));
 
-                    // Remove active class from current item
+                    // Remove active class
                     items[activeIndex].classList.remove('active');
 
                     // Calculate new index
@@ -3582,8 +3879,12 @@
                         activeIndex = (activeIndex - 1 + items.length) % items.length;
                     }
 
-                    // Add active class to new item
+                    // Add active class
                     items[activeIndex].classList.add('active');
+                    
+                    setTimeout(() => {
+                        carouselData.isAnimating = false;
+                    }, 300);
                 });
             });
         });
@@ -3658,7 +3959,7 @@
             }
         });
 
-        // 3D Card Carousel - Amara Functionality
+        // 3D Card Carousel - Amara Functionality - Optimized
         document.addEventListener('DOMContentLoaded', function() {
             const amaraCarousel = document.querySelector('.amara-carousel');
             if (!amaraCarousel) return;
@@ -3668,96 +3969,68 @@
             const nextBtn = document.querySelector('.amara-carousel-next');
             const totalItems = items.length;
             let currentIndex = 0;
-            let autoplayInterval;
+            let isAnimating = false;
+
+            // Preload Amara images
+            const amaraImages = [
+                'https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918348/JMC_28april24_89123_zti3vp.jpg',
+                'https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918332/JMC_28april24_89469_ubnhus.jpg',
+                'https://res.cloudinary.com/dzgd0daeb/image/upload/v1766918334/JMC_Rushali_9sept20_8885_ocjzr7.jpg'
+            ];
+            
+            amaraImages.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
 
             function updateCarousel() {
+                if (isAnimating) return;
+                isAnimating = true;
+                
                 items.forEach((item, index) => {
-                    // Remove all position classes
                     item.classList.remove('center', 'left', 'right', 'hidden');
-
-                    // Calculate relative position
-                    let relativePos = index - currentIndex;
-
-                    // Normalize position to handle circular carousel
-                    if (relativePos < -Math.floor(totalItems / 2)) {
-                        relativePos += totalItems;
-                    } else if (relativePos > Math.floor(totalItems / 2)) {
-                        relativePos -= totalItems;
-                    }
-
-                    // Apply appropriate class based on position
+                    
+                    const relativePos = (index - currentIndex + totalItems) % totalItems;
+                    
                     if (relativePos === 0) {
                         item.classList.add('center');
-                    } else if (relativePos === -1) {
-                        item.classList.add('left');
-                    } else if (relativePos === 1) {
-                        item.classList.add('right');
+                    } else if (relativePos === 1 || relativePos === totalItems - 1) {
+                        item.classList.add(relativePos === 1 ? 'right' : 'left');
                     } else {
                         item.classList.add('hidden');
                     }
                 });
+                
+                setTimeout(() => { isAnimating = false; }, 300);
             }
 
             function nextSlide() {
-                currentIndex = (currentIndex + 1) % totalItems;
-                updateCarousel();
+                if (!isAnimating) {
+                    currentIndex = (currentIndex + 1) % totalItems;
+                    updateCarousel();
+                }
             }
 
             function prevSlide() {
-                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-                updateCarousel();
+                if (!isAnimating) {
+                    currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                    updateCarousel();
+                }
             }
 
-            function startAutoplay() {
-                autoplayInterval = setInterval(nextSlide, 5000);
-            }
-
-            function stopAutoplay() {
-                clearInterval(autoplayInterval);
-            }
-
-            // Initialize carousel
+            // Initialize
             updateCarousel();
 
             // Event listeners
-            if (prevBtn) {
-                prevBtn.addEventListener('click', () => {
-                    prevSlide();
-                    stopAutoplay();
-                    startAutoplay();
-                });
-            }
+            prevBtn?.addEventListener('click', prevSlide);
+            nextBtn?.addEventListener('click', nextSlide);
 
-            if (nextBtn) {
-                nextBtn.addEventListener('click', () => {
-                    nextSlide();
-                    stopAutoplay();
-                    startAutoplay();
-                });
-            }
-
-            // Click on side cards to navigate
-            items.forEach((item, index) => {
-                item.addEventListener('click', () => {
-                    if (!item.classList.contains('center')) {
-                        const clickedPos = index - currentIndex;
-                        if (clickedPos === 1 || (clickedPos < -1 && clickedPos > -totalItems / 2)) {
-                            nextSlide();
-                        } else if (clickedPos === -1 || clickedPos > totalItems / 2) {
-                            prevSlide();
-                        }
-                        stopAutoplay();
-                        startAutoplay();
-                    }
-                });
+            // Auto-play with pause on hover
+            let autoplayInterval = setInterval(nextSlide, 4000);
+            amaraCarousel.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+            amaraCarousel.addEventListener('mouseleave', () => {
+                autoplayInterval = setInterval(nextSlide, 4000);
             });
-
-            // Start autoplay
-            startAutoplay();
-
-            // Pause on hover
-            amaraCarousel.addEventListener('mouseenter', stopAutoplay);
-            amaraCarousel.addEventListener('mouseleave', startAutoplay);
         });
     </script>
 </body>
